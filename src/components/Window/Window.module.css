@@ -4,6 +4,20 @@
   /* visibility: hidden; */
   top: 200px;
   left: 200px;
-  width: 750px;
-  height: 500px;
+  width: 500px;
+  height: 350px;
+
+  border: 1px solid grey;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.ribbon {
+  display: flex;
+  border: 1px solid grey;
+  background-color: blue;
+}
+
+.windowContent {
+  /* background-color: rgb(86, 134, 177); */
 }

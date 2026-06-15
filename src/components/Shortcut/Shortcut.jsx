@@ -1,9 +1,11 @@
 import styles from "./Shortcut.module.css";
 
-function Shortcut({ label, emoji }) {
+function Shortcut({ label, emoji, onClick }) {
   return (
     <div className={styles.shortcut}>
-      <button className={styles.shortcutButton}>{emoji}</button>
+      <button type="button" className={styles.shortcutButton} onClick={onClick}>
+        {emoji}
+      </button>
       <p className={styles.label}>{label}</p>
     </div>
   );
