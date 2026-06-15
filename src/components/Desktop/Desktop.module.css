@@ -2,4 +2,6 @@
   background-color: rgb(24, 24, 121);
   flex: 9;
   overflow-y: auto;
+  display: flex;
+  flex-direction: column;
 }

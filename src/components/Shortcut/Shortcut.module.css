@@ -1,0 +1,17 @@
+.shortcut {
+  /* border: 1px solid aliceblue; */
+  /* align-items: center; */
+  padding: 10px;
+}
+
+.shortcutButton {
+  background-color: aqua;
+  height: 100px;
+  width: 100px;
+  border-radius: 10px;
+  font-size: 30px;
+}
+
+.label {
+  color: aliceblue;
+}
