@@ -18,6 +18,18 @@
   background-color: blue;
 }
 
+.ribbon p {
+  flex: 10;
+}
+
+.ribbon button {
+  flex: 1;
+}
+
+.closeBtn:hover {
+  background-color: red;
+}
+
 .windowContent {
   /* background-color: rgb(86, 134, 177); */
 }

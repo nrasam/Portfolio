@@ -3,27 +3,36 @@ import Desktop from "./components/Desktop/Desktop";
 import TaskBar from "./components/Taskbar/Taskbar";
 import Window from "./components/Window/Window";
 import AboutApp from "./apps/AboutApp";
+import ContactApp from "./apps/ContactApp";
+import EducationApp from "./apps/EducationApp";
+import ExperienceApp from "./apps/ExperienceApp";
+import ProjectsApp from "./apps/ProjectsApp";
+import SkillsApp from "./apps/SkillsApp";
 
 import "./App.css";
 
 const shortcutItems = [
   { label: "About Me", emoji: "🧑🏻", content: <AboutApp /> },
-  { label: "Contact Me", emoji: "📧", content: <p>Contact content here</p> },
-  { label: "Education", emoji: "🎓", content: <p>Education content here</p> },
-  { label: "Experience", emoji: "💼", content: <p>Experience content here</p> },
-  { label: "Skills", emoji: "📊", content: <p>Skills content here</p> },
-  { label: "My Projects", emoji: "⚡", content: <p>Projects content here</p> },
+  { label: "Contact Me", emoji: "📧", content: <ContactApp /> },
+  { label: "Education", emoji: "🎓", content: <EducationApp /> },
+  { label: "Experience", emoji: "💼", content: <ExperienceApp /> },
+  { label: "Skills", emoji: "📊", content: <SkillsApp /> },
+  { label: "My Projects", emoji: "⚡", content: <ProjectsApp /> },
 ];
 
 function App() {
   const [openWindows, setOpenWindows] = useState({});
 
-  // const handleShortcutClick = (label) => {
-  //   setOpenWindows((prev) => ({ ...prev, [label]: true }));
-  // };
-
   const handleShortcutClick = (label) => {
-    setOpenWindows(() => ({ [label]: true }));
+    setOpenWindows((prev) => ({ ...prev, [label]: true }));
+  };
+
+  const handleMinimizeClick = (label) => {
+    setOpenWindows((prev) => ({ ...prev, [label]: false }));
+  };
+
+  const handleCloseClick = (label) => {
+    setOpenWindows((prev) => ({ ...prev, [label]: false }));
   };
 
   return (
@@ -33,17 +42,25 @@ function App() {
         onShortcutClick={handleShortcutClick}
       />
 
-      {shortcutItems.map((item) => (
-        <Window
-          key={item.label}
-          title={item.label}
-          hidden={!openWindows[item.label]}
-        >
-          {item.content}
-        </Window>
-      ))}
+      {shortcutItems.map(
+        (item) =>
+          openWindows[item.label] && (
+            <Window
+              key={item.label}
+              title={item.label}
+              onMinimizeClick={() => handleMinimizeClick(item.label)}
+              onCloseClick={() => handleCloseClick(item.label)}
+            >
+              {item.content}
+            </Window>
+          ),
+      )}
 
-      <TaskBar />
+      <TaskBar>
+        {shortcutItems.map((item) => (
+          <p key={item.label}>{item.label}</p>
+        ))}
+      </TaskBar>
     </div>
   );
 }

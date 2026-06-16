@@ -1,13 +1,13 @@
 .shortcut {
   /* border: 1px solid aliceblue; */
-  padding: 10px;
+  padding: 20px;
   width: fit-content;
 }
 
 .shortcutButton {
   background-color: aqua;
-  height: 100px;
-  width: 100px;
+  height: 75px;
+  width: 75px;
   border-radius: 10px;
   font-size: 30px;
 }

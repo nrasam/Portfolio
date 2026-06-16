@@ -1,6 +1,6 @@
 .desktop {
   background-color: rgb(24, 24, 121);
-  flex: 9;
+  flex: 15;
   overflow-y: auto;
   display: flex;
   flex-direction: column;

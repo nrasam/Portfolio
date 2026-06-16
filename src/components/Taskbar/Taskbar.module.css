@@ -1,4 +1,27 @@
 .taskbar {
   flex: 1;
   background-color: rgb(98, 98, 211);
+  /* position: relative; */
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.startBtn {
+  height: 50px;
+  width: 80px;
+  background-color: green;
+
+  margin-left: 10px;
+  /* position: absolute; */
+  /* top: 10px; */
+  /* left: 10px; */
+}
+
+.time {
+  background-color: darkblue;
+  width: fit-content;
+  margin-right: 10px;
+  color: white;
 }
