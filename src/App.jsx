@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useCallback } from "react";
 import Desktop from "./components/Desktop/Desktop";
 import TaskBar from "./components/Taskbar/Taskbar";
 import Window from "./components/Window/Window";
@@ -22,6 +22,7 @@ const shortcutItems = [
 
 function App() {
   const [openWindows, setOpenWindows] = useState({});
+  const desktopDimensions = useRef(null);
 
   const handleShortcutClick = (label) => {
     setOpenWindows((prev) => ({ ...prev, [label]: true }));
@@ -35,11 +36,16 @@ function App() {
     setOpenWindows((prev) => ({ ...prev, [label]: false }));
   };
 
+  const handleDesktopReady = useCallback((height, width) => {
+    desktopDimensions.current = { height, width };
+  }, []);
+
   return (
     <div className="app">
       <Desktop
         shortcuts={shortcutItems}
         onShortcutClick={handleShortcutClick}
+        onDesktopReady={handleDesktopReady}
       />
 
       {shortcutItems.map(
@@ -50,6 +56,7 @@ function App() {
               title={item.label}
               onMinimizeClick={() => handleMinimizeClick(item.label)}
               onCloseClick={() => handleCloseClick(item.label)}
+              desktopDimensions={desktopDimensions}
             >
               {item.content}
             </Window>
