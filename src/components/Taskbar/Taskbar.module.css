@@ -1,5 +1,5 @@
 .taskbar {
-  flex: 1;
+  height: var(--taskbar-height);
   background-color: rgb(98, 98, 211);
   /* position: relative; */
 
@@ -9,7 +9,7 @@
 }
 
 .startBtn {
-  height: 50px;
+  height: 40px;
   width: 80px;
   background-color: green;
 

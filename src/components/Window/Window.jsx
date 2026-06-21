@@ -6,7 +6,8 @@ function Window({
   children,
   onMinimizeClick,
   onCloseClick,
-  desktopDimensions,
+  zIndex,
+  onFocus,
 }) {
   const [position, setPosition] = useState({ x: 100, y: 100 });
   const [size, setSize] = useState({ height: "350px", width: "500px" });
@@ -55,10 +56,9 @@ function Window({
 
     if (currentMaxState) {
       prevSizeAndPosition.current = { size, position };
-      //setSize({ height: "93.75%", width: "100%" });
       setSize({
-        height: desktopDimensions.current.height,
-        width: desktopDimensions.current.width,
+        height: "calc(100% - var(--taskbar-height))",
+        width: "100%",
       });
       setPosition({ x: 0, y: 0 });
     } else {
@@ -75,7 +75,9 @@ function Window({
         top: position.y,
         height: size.height,
         width: size.width,
+        zIndex: zIndex,
       }}
+      onMouseDown={onFocus}
     >
       <div className={styles.ribbon} onMouseDown={handleMouseDown}>
         <p>{title}</p>

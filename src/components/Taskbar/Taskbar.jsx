@@ -2,10 +2,8 @@ import styles from "./Taskbar.module.css";
 
 import { useEffect, useState } from "react";
 
-function TaskBar() {
+function TaskBar({ shortcutItems, openWindows, onTaskbarClick }) {
   const [time, setTime] = useState(new Date());
-
-  //console.log(children);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -18,6 +16,10 @@ function TaskBar() {
   return (
     <div className={styles.taskbar}>
       <button className={styles.startBtn}>Start</button>
+      {openWindows &&
+        openWindows.map((window) => (
+          <button key={window.id}>{window.id}</button>
+        ))}
       <p className={styles.time}>{time.toLocaleTimeString()}</p>
     </div>
   );

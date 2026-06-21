@@ -1,3 +1,7 @@
+:root {
+  --taskbar-height: 50px;
+}
+
 .app {
   display: flex;
   flex-direction: column;
