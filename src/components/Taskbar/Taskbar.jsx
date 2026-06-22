@@ -16,10 +16,41 @@ function TaskBar({ shortcutItems, openWindows, onTaskbarClick }) {
   return (
     <div className={styles.taskbar}>
       <button className={styles.startBtn}>Start</button>
-      {openWindows &&
-        openWindows.map((window) => (
-          <button key={window.id}>{window.id}</button>
-        ))}
+      {shortcutItems &&
+        shortcutItems.map((shortcut) => {
+          const isOpen = openWindows.find(
+            (window) => window.id === shortcut.id,
+          );
+
+          return (
+            <button
+              key={shortcut.id}
+              className={isOpen ? styles.appBtnActive : styles.appBtn}
+              onClick={() => onTaskbarClick(shortcut.id)}
+            >
+              <p>
+                {shortcut.emoji}&nbsp;
+                {shortcut.label}
+              </p>
+            </button>
+          );
+        })}
+
+      {/* {openWindows &&
+        openWindows.map((window) => {
+          const shortcutItem = shortcutItems.find(
+            (item) => item.id === window.id,
+          );
+          return (
+            <button
+              key={window.id}
+              className={styles.appBtn}
+              onClick={() => onTaskbarClick(shortcutItem.id)}
+            >
+              {shortcutItem.label}
+            </button>
+          );
+        })} */}
       <p className={styles.time}>{time.toLocaleTimeString()}</p>
     </div>
   );

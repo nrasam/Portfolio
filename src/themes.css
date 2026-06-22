@@ -1,0 +1,62 @@
+[data-theme="default"] {
+  --ribbon-gradient-start: #ff00ff;
+  --window-bg: #0a0a12;
+}
+
+[data-theme="xp"] {
+  --ribbon-gradient-start: #0a6dd8;
+  --ribbon-gradient-mid: #0a58c2;
+  --ribbon-gradient-mid2: #0a4ab8;
+  --ribbon-gradient-end: #0851c4;
+
+  --window-bg: aliceblue;
+  --window-border-color: grey;
+  --text-color: white;
+
+  --ribbon-border-color-top-left: #fff;
+  --ribbon-border-color-bottom-right: 555;
+
+  --ribbon-text-shadow-color: rgba(0, 0, 0, 0.4);
+
+  --window-close-btn-hover-color: red;
+
+  /* Ribbon buttons */
+  --btn-gradient-start: #f4f4f4;
+  --btn-gradient-mid: #e8e6e0;
+  --btn-gradient-mid2: #d4d0c8;
+  --btn-gradient-end: #c0bcb4;
+
+  --btn-border-light: #ffffff;
+  --btn-border-dark: #6e6e6e;
+
+  --btn-text-color: #1a1a1a;
+
+  /* Taskbar */
+  --taskbar-gradient-start: #245edc;
+  --taskbar-gradient-mid: #1c4fc7;
+  --taskbar-gradient-end: #163e9e;
+  --taskbar-top-highlight: #5b93f5;
+
+  /* Start button */
+  --start-btn-gradient-start: #4eb84e;
+  --start-btn-gradient-mid: #2e8c2e;
+  --start-btn-gradient-end: #1f6b1f;
+  --start-btn-border-light: #7ed87e;
+  --start-btn-border-dark: #0f3d0f;
+  --start-btn-text-color: #ffffff;
+
+  /* Taskbar app buttons (for later) */
+  --taskbar-app-bg: rgba(255, 255, 255, 0.12);
+  --taskbar-app-bg-active: rgba(0, 0, 0, 0.3);
+  --taskbar-app-border: rgba(255, 255, 255, 0.25);
+
+  /* Clock */
+  --clock-bg: rgba(0, 0, 0, 0.2);
+  --clock-border: rgba(255, 255, 255, 0.15);
+  --clock-text-color: #ffffff;
+}
+
+[data-theme="cyberpunk"] {
+  --ribbon-gradient-start: #ff00ff;
+  --window-bg: #0a0a12;
+}

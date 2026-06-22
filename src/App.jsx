@@ -10,6 +10,7 @@ import ProjectsApp from "./apps/ProjectsApp";
 import SkillsApp from "./apps/SkillsApp";
 
 import "./App.css";
+import "./themes.css";
 
 const shortcutItems = [
   { id: 1, label: "About Me", emoji: "🧑🏻", content: <AboutApp /> },
@@ -18,6 +19,7 @@ const shortcutItems = [
   { id: 4, label: "Experience", emoji: "💼", content: <ExperienceApp /> },
   { id: 5, label: "Skills", emoji: "📊", content: <SkillsApp /> },
   { id: 6, label: "My Projects", emoji: "⚡", content: <ProjectsApp /> },
+  { id: 7, label: "Settings", emoji: "⚙", content: <p>Settings</p> },
 ];
 
 function App() {
@@ -25,26 +27,46 @@ function App() {
   const [openWindows, setOpenWindows] = useState([]);
   const [highestZIndex, setHighestZIndex] = useState(1);
 
+  const [theme, setTheme] = useState("xp");
+
   const handleShortcutClick = (id) => {
-    // is the id in the windows array
+    // is the id in the windows array?
     const isOpen = openWindows.some((window) => window.id === id);
 
     if (isOpen) {
-      setOpenWindows((prev) =>
-        prev.map((window) =>
-          window.id === id
-            ? { ...window, zIndex: highestZIndex, minimized: false }
-            : window,
-        ),
-      );
-      setHighestZIndex(highestZIndex + 1);
+      // If already opened
+      const openWindow = openWindows.find((window) => window.id === id);
+
+      // If minimized
+      if (openWindow.minimized) {
+        // Unminimize it and update z-index
+        const newZIndex = highestZIndex + 1;
+        setHighestZIndex(newZIndex);
+
+        setOpenWindows((prev) =>
+          prev.map((window) =>
+            window.id === id
+              ? { ...window, zIndex: newZIndex, minimized: false }
+              : window,
+          ),
+        );
+      } else {
+        // If not minimized, then minimize it
+        setOpenWindows((prev) =>
+          prev.map((window) =>
+            window.id === id ? { ...window, minimized: true } : window,
+          ),
+        );
+      }
     } else {
-      // Add to open windows [] if not already open
+      const newZIndex = highestZIndex + 1;
+      setHighestZIndex(newZIndex);
+
+      // Add to open windows [] if not already open and give it highest z-index
       setOpenWindows((prev) => [
         ...prev,
-        { id: id, zIndex: highestZIndex, minimized: false },
+        { id: id, zIndex: newZIndex, minimized: false },
       ]);
-      setHighestZIndex(highestZIndex + 1);
     }
   };
 
@@ -76,8 +98,12 @@ function App() {
     }
   };
 
+  // const handleTaskbarClick = (id) => {
+
+  // }
+
   return (
-    <div className="app">
+    <div className="app" data-theme={theme}>
       <Desktop
         shortcuts={shortcutItems}
         onShortcutClick={handleShortcutClick}
@@ -88,18 +114,17 @@ function App() {
         const shortcut = shortcutItems.find((item) => item.id === window.id);
 
         return (
-          !window.minimized && (
-            <Window
-              key={window.id}
-              title={shortcut.label}
-              onMinimizeClick={() => handleMinimizeClick(window.id)}
-              onCloseClick={() => handleCloseClick(window.id)}
-              zIndex={window.zIndex}
-              onFocus={() => handleOnFocus(window.id)}
-            >
-              {shortcut.content}
-            </Window>
-          )
+          <Window
+            key={window.id}
+            title={shortcut.label}
+            onMinimizeClick={() => handleMinimizeClick(window.id)}
+            onCloseClick={() => handleCloseClick(window.id)}
+            zIndex={window.zIndex}
+            onFocus={() => handleOnFocus(window.id)}
+            isMinimized={window.minimized}
+          >
+            {shortcut.content}
+          </Window>
         );
       })}
 

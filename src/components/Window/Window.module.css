@@ -1,5 +1,5 @@
 .window {
-  background-color: aliceblue;
+  background-color: var(--window-bg);
   position: absolute;
   /* visibility: hidden; */
   top: 200px;
@@ -7,29 +7,81 @@
   width: 500px;
   height: 350px;
 
-  border: 1px solid grey;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
+  border: 1px solid var(--window-border-color);
+  border-radius: 6px 6px 0 0;
+
+  /* Stops the children elements from covering up the rounded corners */
+  overflow: hidden;
 }
 
 .ribbon {
   display: flex;
-  border: 1px solid grey;
-  background-color: blue;
+  border: 1px solid;
+  border-color: var(--ribbon-border-color-top-left)
+    var(--ribbon-border-color-bottom-right)
+    var(--ribbon-border-color-bottom-right) var(--ribbon-border-color-top-left); /* top right bottom left */
+  /* linear gradient only works with background, not background color */
+  background: linear-gradient(
+    180deg,
+    var(--ribbon-gradient-start) 0%,
+    var(--ribbon-gradient-mid) 50%,
+    var(--ribbon-gradient-mid2) 51%,
+    var(--ribbon-gradient-end) 100%
+  );
 }
 
 .ribbon p {
   flex: 10;
+  text-shadow: 1px 1px 1px var(--ribbon-text-shadow-color);
 }
 
 .ribbon button {
-  flex: 1;
+  flex: 0 0 21px;
+
+  /* height: 21px;
+  width: 21px; */
+
+  border: 1px solid;
+  border-color: var(--btn-border-light) var(--btn-border-dark)
+    var(--btn-border-dark) var(--btn-border-light);
+  background: linear-gradient(
+    180deg,
+    var(--btn-gradient-start) 0%,
+    var(--btn-gradient-mid) 50%,
+    var(--btn-gradient-mid2) 51%,
+    var(--btn-gradient-end) 100%
+  );
+}
+
+.ribbon button:active {
+  /* Inverted border color and gradient */
+  border: 1px solid;
+  border-color: var(--btn-border-dark) var(--btn-border-light)
+    var(--btn-border-light) var(--btn-border-dark);
+
+  background: linear-gradient(
+    180deg,
+    var(--btn-gradient-end) 0%,
+    var(--btn-gradient-mid2) 50%,
+    var(--btn-gradient-mid) 51%,
+    var(--btn-gradient-start) 100%
+  );
 }
 
 .closeBtn:hover {
-  background-color: red;
+  background-color: var(--window-close-btn-hover-color);
 }
 
 .windowContent {
   /* background-color: rgb(86, 134, 177); */
+}
+
+.resizeHandle {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 14px;
+  height: 14px;
+  cursor: se-resize;
+  background: linear-gradient(135deg, transparent 50%, #a09888 50%);
 }

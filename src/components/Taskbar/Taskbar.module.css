@@ -1,7 +1,14 @@
 .taskbar {
   height: var(--taskbar-height);
-  background-color: rgb(98, 98, 211);
-  /* position: relative; */
+
+  background: linear-gradient(
+    180deg,
+    var(--taskbar-gradient-start) 0%,
+    var(--taskbar-gradient-mid) 50%,
+    var(--taskbar-gradient-end) 100%
+  );
+
+  border-top: 1px solid var(--taskbar-top-highlight);
 
   display: flex;
   justify-content: space-between;
@@ -11,17 +18,54 @@
 .startBtn {
   height: 40px;
   width: 80px;
-  background-color: green;
+  /* background-color: green; */
+  background: linear-gradient(
+    180deg,
+    var(--start-btn-gradient-start) 0%,
+    var(--start-btn-gradient-mid) 50%,
+    var(--start-btn-gradient-end) 100%
+  );
+
+  border: 1px solid;
+  /* Only colors a border; doesn't create one on its own */
+  border-color: var(--start-btn-border-light) var(--start-btn-border-dark)
+    var(--start-btn-border-dark) var(--start-btn-border-light);
+
+  color: var(--start-btn-text-color);
 
   margin-left: 10px;
-  /* position: absolute; */
-  /* top: 10px; */
-  /* left: 10px; */
 }
 
 .time {
-  background-color: darkblue;
+  background-color: var(--clock-bg);
+  border: 1px solid;
+  border-color: var(--clock-border);
   width: fit-content;
   margin-right: 10px;
-  color: white;
+  color: var(--clock-text-color);
+}
+
+.appBtn {
+  height: 40px;
+  width: 100px;
+  background-color: transparent;
+  border: none;
+  font-weight: bold;
+}
+
+.appBtn:hover {
+  background-color: var(--taskbar-app-bg);
+}
+
+.appBtnActive {
+  height: 40px;
+  width: 100px;
+  background-color: var(--taskbar-app-bg);
+  border: none;
+  border-bottom: 2px solid;
+  border-bottom-color: var(--taskbar-app-border);
+}
+
+.appBtn:active {
+  background-color: var(--taskbar-app-bg-active);
 }

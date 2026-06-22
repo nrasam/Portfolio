@@ -8,15 +8,23 @@ function Window({
   onCloseClick,
   zIndex,
   onFocus,
+  isMinimized,
 }) {
-  const [position, setPosition] = useState({ x: 100, y: 100 });
-  const [size, setSize] = useState({ height: "350px", width: "500px" });
+  const randomStartingPositionOffset = Math.floor(Math.random() * 25) + 1;
+  const [position, setPosition] = useState({
+    x: 100 + randomStartingPositionOffset,
+    y: 100 + randomStartingPositionOffset,
+  });
+  const [size, setSize] = useState({ height: 350, width: 500 });
 
   const isDragging = useRef(false);
   const dragOffset = useRef({ x: 0, y: 0 });
   const [isMaximized, setIsMaximized] = useState(false);
 
   const prevSizeAndPosition = useRef({});
+
+  const isResizing = useRef(false);
+  const resizeOffset = useRef({ x: 0, y: 0 });
 
   const handleMouseDown = (e) => {
     dragOffset.current = {
@@ -28,16 +36,28 @@ function Window({
 
   useEffect(() => {
     const handleMouseMove = (e) => {
-      if (!isDragging.current) return;
+      if (isDragging.current) {
+        setPosition({
+          x: e.clientX - dragOffset.current.x,
+          y: e.clientY - dragOffset.current.y,
+        });
+      }
 
-      setPosition({
-        x: e.clientX - dragOffset.current.x,
-        y: e.clientY - dragOffset.current.y,
-      });
+      if (isResizing.current) {
+        const heightDelta = e.clientY - resizeOffset.current.y;
+        const widthDelta = e.clientX - resizeOffset.current.x;
+        console.log("heightDelta", heightDelta);
+
+        setSize((prev) => ({
+          height: prev.height + heightDelta,
+          width: prev.width + widthDelta,
+        }));
+      }
     };
 
     const handleMouseUp = () => {
       isDragging.current = false;
+      isResizing.current = false;
     };
 
     document.addEventListener("mousemove", handleMouseMove);
@@ -67,6 +87,11 @@ function Window({
     }
   };
 
+  const handleResizeMouseDown = (e) => {
+    isResizing.current = true;
+    resizeOffset.current = { x: e.clientX, y: e.clientY };
+  };
+
   return (
     <div
       className={styles.window}
@@ -76,18 +101,23 @@ function Window({
         height: size.height,
         width: size.width,
         zIndex: zIndex,
+        visibility: isMinimized ? "hidden" : "visible",
       }}
       onMouseDown={onFocus}
     >
       <div className={styles.ribbon} onMouseDown={handleMouseDown}>
         <p>{title}</p>
         <button onClick={onMinimizeClick}>-</button>
-        <button onClick={handleMaximizeWindow}>+</button>
+        <button onClick={handleMaximizeWindow}>□</button>
         <button className={styles.closeBtn} onClick={onCloseClick}>
           X
         </button>
       </div>
       <div className={styles.windowContent}>{children}</div>
+      <div
+        className={styles.resizeHandle}
+        onMouseDown={handleResizeMouseDown}
+      ></div>
     </div>
   );
 }
