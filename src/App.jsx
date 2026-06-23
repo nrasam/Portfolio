@@ -12,13 +12,52 @@ import SkillsApp from "./apps/SkillsApp";
 import "./App.css";
 import "./themes.css";
 
+import {
+  User,
+  Mail,
+  GraduationCap,
+  Briefcase,
+  BarChart3,
+  Folder,
+} from "lucide-react";
+
 const shortcutItems = [
-  { id: 1, label: "About Me", emoji: "🧑🏻", content: <AboutApp /> },
-  { id: 2, label: "Contact Me", emoji: "📧", content: <ContactApp /> },
-  { id: 3, label: "Education", emoji: "🎓", content: <EducationApp /> },
-  { id: 4, label: "Experience", emoji: "💼", content: <ExperienceApp /> },
-  { id: 5, label: "Skills", emoji: "📊", content: <SkillsApp /> },
-  { id: 6, label: "My Projects", emoji: "⚡", content: <ProjectsApp /> },
+  { id: 1, label: "About Me", emoji: "🧑🏻", icon: User, content: <AboutApp /> },
+  {
+    id: 2,
+    label: "Contact Me",
+    emoji: "📧",
+    icon: Mail,
+    content: <ContactApp />,
+  },
+  {
+    id: 3,
+    label: "Education",
+    emoji: "🎓",
+    icon: GraduationCap,
+    content: <EducationApp />,
+  },
+  {
+    id: 4,
+    label: "Experience",
+    emoji: "💼",
+    icon: Briefcase,
+    content: <ExperienceApp />,
+  },
+  {
+    id: 5,
+    label: "Skills",
+    emoji: "📊",
+    icon: BarChart3,
+    content: <SkillsApp />,
+  },
+  {
+    id: 6,
+    label: "My Projects",
+    emoji: "⚡",
+    icon: Folder,
+    content: <ProjectsApp />,
+  },
   { id: 7, label: "Settings", emoji: "⚙", content: <p>Settings</p> },
 ];
 
@@ -27,7 +66,7 @@ function App() {
   const [openWindows, setOpenWindows] = useState([]);
   const [highestZIndex, setHighestZIndex] = useState(1);
 
-  const [theme, setTheme] = useState("xp");
+  const [theme, setTheme] = useState("default");
 
   const handleShortcutClick = (id) => {
     // is the id in the windows array?
@@ -97,10 +136,6 @@ function App() {
       setHighestZIndex(highestZIndex + 1);
     }
   };
-
-  // const handleTaskbarClick = (id) => {
-
-  // }
 
   return (
     <div className="app" data-theme={theme}>

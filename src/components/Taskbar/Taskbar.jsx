@@ -15,7 +15,12 @@ function TaskBar({ shortcutItems, openWindows, onTaskbarClick }) {
 
   return (
     <div className={styles.taskbar}>
-      <button className={styles.startBtn}>Start</button>
+      <button className={styles.startBtn}>
+        <div className={styles.startIcon}>
+          <div className={styles.startIconInner}></div>
+        </div>
+        <span>Start</span>
+      </button>
       {shortcutItems &&
         shortcutItems.map((shortcut) => {
           const isOpen = openWindows.find(
@@ -35,23 +40,11 @@ function TaskBar({ shortcutItems, openWindows, onTaskbarClick }) {
             </button>
           );
         })}
-
-      {/* {openWindows &&
-        openWindows.map((window) => {
-          const shortcutItem = shortcutItems.find(
-            (item) => item.id === window.id,
-          );
-          return (
-            <button
-              key={window.id}
-              className={styles.appBtn}
-              onClick={() => onTaskbarClick(shortcutItem.id)}
-            >
-              {shortcutItem.label}
-            </button>
-          );
-        })} */}
-      <p className={styles.time}>{time.toLocaleTimeString()}</p>
+      <div className={styles.tray}>ICONS</div>
+      <div>
+        <p className={styles.time}>{time.toLocaleTimeString()}</p>
+        <p className={styles.date}>06/23/2026</p>
+      </div>
     </div>
   );
 }

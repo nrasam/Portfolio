@@ -28,8 +28,8 @@ function Window({
 
   const handleMouseDown = (e) => {
     dragOffset.current = {
-      x: e.clientX - position.x,
-      y: e.clientY - position.y,
+      x: e.clientX,
+      y: e.clientY,
     };
     isDragging.current = true;
   };
@@ -46,12 +46,14 @@ function Window({
       if (isResizing.current) {
         const heightDelta = e.clientY - resizeOffset.current.y;
         const widthDelta = e.clientX - resizeOffset.current.x;
-        console.log("heightDelta", heightDelta);
 
-        setSize((prev) => ({
-          height: prev.height + heightDelta,
-          width: prev.width + widthDelta,
-        }));
+        const prevHeight = size.height;
+        const prevWidth = size.width;
+
+        setSize({
+          height: prevHeight + heightDelta,
+          width: prevWidth + widthDelta,
+        });
       }
     };
 
