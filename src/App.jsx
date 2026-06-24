@@ -19,6 +19,7 @@ import {
   Briefcase,
   BarChart3,
   Folder,
+  Settings,
 } from "lucide-react";
 
 const shortcutItems = [
@@ -58,7 +59,13 @@ const shortcutItems = [
     icon: Folder,
     content: <ProjectsApp />,
   },
-  { id: 7, label: "Settings", emoji: "⚙", content: <p>Settings</p> },
+  {
+    id: 7,
+    label: "Settings",
+    emoji: "⚙",
+    icon: Settings,
+    content: <p>Settings</p>,
+  },
 ];
 
 function App() {
@@ -142,6 +149,7 @@ function App() {
       <Desktop
         shortcuts={shortcutItems}
         onShortcutClick={handleShortcutClick}
+        theme={theme}
       />
 
       {openWindows.map((window) => {
@@ -167,6 +175,7 @@ function App() {
         shortcutItems={shortcutItems}
         openWindows={openWindows}
         onTaskbarClick={handleShortcutClick}
+        theme={theme}
       />
     </div>
   );

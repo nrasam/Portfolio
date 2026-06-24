@@ -10,7 +10,8 @@ function Window({
   onFocus,
   isMinimized,
 }) {
-  const randomStartingPositionOffset = Math.floor(Math.random() * 25) + 1;
+  // const randomStartingPositionOffset = Math.floor(Math.random() * 25) + 1;
+  const randomStartingPositionOffset = 0;
   const [position, setPosition] = useState({
     x: 100 + randomStartingPositionOffset,
     y: 100 + randomStartingPositionOffset,

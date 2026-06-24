@@ -1,18 +1,22 @@
-.shortcut {
-  /* border: 1px solid aliceblue; */
-  padding: 20px;
-  width: fit-content;
+[data-theme="default"] .shortcut {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: background-color 150ms;
+  width: 5rem;
 }
 
-.shortcutButton {
-  background-color: aqua;
-  height: 75px;
-  width: 75px;
-  border-radius: 10px;
-  font-size: 30px;
+[data-theme="default"] .iconContainer {
+  background-color: white;
 }
 
-.label {
+[data-theme="default"] .label {
   color: aliceblue;
   text-align: center;
 }

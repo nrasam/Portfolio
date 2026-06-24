@@ -1,7 +1,15 @@
 .desktop {
   flex: 1;
   background-color: rgb(24, 24, 121);
-  overflow-y: auto;
+  overflow: hidden;
+  /* position: relative; */
+}
+
+.shortcutContainer {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
   display: flex;
   flex-direction: column;
+  gap: 1rem;
 }

@@ -32,6 +32,7 @@ button {
   display: flex;
   align-items: center;
   gap: 8px; /* space between icon and text */
+  flex: 2;
 }
 
 [data-theme="default"] .startBtn:hover {
@@ -67,6 +68,7 @@ button {
   align-items: center;
   gap: 0.5rem;
   transition: all 150ms;
+  flex: 1;
 }
 
 [data-theme="default"] .appBtnActive {
@@ -81,6 +83,7 @@ button {
   align-items: center;
   gap: 0.5rem;
   transition: all 150ms;
+  flex: 1;
 
   background-color: rgba(255, 255, 255, 0.2);
   border-bottom: 2px solid #60a5fa;
@@ -94,16 +97,19 @@ button {
   font: 14px;
   font-size: medium;
   color: #cbd5e1;
+  flex: 1;
 }
 
 [data-theme="default"] .date {
   font: 12px;
   color: #cbd5e1;
+  flex: 1;
 }
 
 [data-theme="default"] .tray {
   font: 12px;
   color: #cbd5e1;
+  flex: 1;
 }
 
 [data-theme="xp"] .taskbar {

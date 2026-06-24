@@ -2,7 +2,12 @@ import styles from "./Taskbar.module.css";
 
 import { useEffect, useState } from "react";
 
-function TaskBar({ shortcutItems, openWindows, onTaskbarClick }) {
+function TaskBar({
+  shortcutItems,
+  openWindows,
+  onTaskbarClick,
+  theme = "default",
+}) {
   const [time, setTime] = useState(new Date());
 
   useEffect(() => {
@@ -33,10 +38,12 @@ function TaskBar({ shortcutItems, openWindows, onTaskbarClick }) {
               className={isOpen ? styles.appBtnActive : styles.appBtn}
               onClick={() => onTaskbarClick(shortcut.id)}
             >
-              <p>
-                {shortcut.emoji}&nbsp;
-                {shortcut.label}
-              </p>
+              {theme === "default" ? (
+                <shortcut.icon size={20} />
+              ) : (
+                <span>{shortcut.emoji}</span>
+              )}
+              {shortcut.label}
             </button>
           );
         })}
