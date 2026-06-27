@@ -1,6 +1,6 @@
-.desktop {
-  flex: 1;
-  background-color: rgb(24, 24, 121);
+[data-theme="default"] .desktop {
+  /* flex: 1; */
+  background: linear-gradient(135deg, #60a5fa 0%, #a855f7 50%, #ec4899 100%);
   overflow: hidden;
   position: relative;
 
@@ -9,17 +9,35 @@
 }
 
 .wallpaper {
+  position: absolute;
+  /* stretch to fill the edges of desktop */
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.4;
 }
 
 .bgPattern {
   position: absolute;
   inset: 0;
   opacity: 0.1;
-}
-
-.bgPatternInner {
-  position: absolute;
-  inset: 0;
+  /* Gives dotted overlay pattern */
+  /* https://youtu.be/4kWHW7da4U8?si=-3cukNa-SSRZcq71 */
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      white 2px,
+      white 4px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 2px,
+      white 2px,
+      white 4px
+    );
 }
 
 .shortcutContainer {
@@ -85,6 +103,7 @@
 
 .gameShortcut {
   position: absolute;
-  top: 10rem;
-  right: 500px;
+  top: 1rem;
+  right: 1rem;
+  background: linear-gradient(135deg, #c084fc, #ec4899);
 }

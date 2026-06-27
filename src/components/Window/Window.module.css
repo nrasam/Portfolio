@@ -28,6 +28,8 @@
     var(--ribbon-gradient-mid2) 51%,
     var(--ribbon-gradient-end) 100%
   );
+
+  cursor: move;
 }
 
 .ribbon p {

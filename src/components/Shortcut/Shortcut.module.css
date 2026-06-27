@@ -8,6 +8,7 @@
   background: transparent;
   border: none;
   cursor: pointer;
+  /* Transitions hover background */
   transition: background-color 150ms;
   width: 5rem;
 }
@@ -16,11 +17,34 @@
   background: rgba(37, 99, 235, 0.4);
 }
 
+.shortcut:hover .iconContainer {
+  /* Pop up icon from within the icon container */
+  transform: scale(1.1);
+}
+
 [data-theme="default"] .iconContainer {
-  background-color: white;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  transition: transform 150ms;
+
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 8px;
+  color: #334155;
 }
 
 [data-theme="default"] .label {
-  color: aliceblue;
+  font-size: 0.75rem;
+  font-weight: 500;
   text-align: center;
+  color: white;
+  /* Helps text stand out */
+  /* drop-shadow follows the actual shape of the content, 
+    meaning for text, it hugs the letters themselves rather 
+    than drawing a shadow behind a rectangle */
+  /* drop-shadow(horizontal offset, vertical offset, blur radius, color)  */
+  filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.8));
 }

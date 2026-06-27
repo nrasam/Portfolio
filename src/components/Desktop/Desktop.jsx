@@ -4,39 +4,20 @@ import { useRef } from "react";
 
 import { Gamepad2 } from "lucide-react";
 
-function Desktop({ shortcuts, onShortcutClick, theme }) {
+function Desktop({ shortcuts, onShortcutClick, theme, themeConfig }) {
   const desktopRef = useRef(null);
 
   return (
     <div ref={desktopRef} className={styles.desktop}>
-      <div
-        className={styles.wallpaper}
-        style={{
-          // backgroundImage: `url(${themeConfigs[theme].wallpaper})`,
-          opacity: 0.4,
-        }}
-      ></div>
-      <div className={styles.bgPattern}>
+      {themeConfig.wallpaper && (
         <div
-          className={styles.bgPatternInner}
+          className={styles.wallpaper}
           style={{
-            backgroundImage: `repeating-linear-gradient(
-                      0deg,
-                      transparent,
-                      transparent 2px,
-                      white 2px,
-                      white 4px
-                    ),
-                    repeating-linear-gradient(
-                      90deg,
-                      transparent,
-                      transparent 2px,
-                      white 2px,
-                      white 4px
-                    )`,
+            backgroundImage: `url(${themeConfig.wallpaper})`,
           }}
-        />
-      </div>
+        ></div>
+      )}
+      <div className={styles.bgPattern}></div>
       <div className={styles.welcomeContainer}>
         <h1 className={styles.welcomeHeader}>Welcome to My Portfolio</h1>
         <h2 className={styles.welcomeSubheader}>
@@ -48,7 +29,7 @@ function Desktop({ shortcuts, onShortcutClick, theme }) {
         </div>
       </div>
       <div className={styles.shortcutContainer}>
-        {shortcuts.map((shortcut) => (
+        {shortcuts.slice(0, 7).map((shortcut) => (
           <Shortcut
             key={shortcut.id}
             label={shortcut.label}
@@ -59,14 +40,16 @@ function Desktop({ shortcuts, onShortcutClick, theme }) {
           />
         ))}
       </div>
-      {/* <Shortcut
-        className={styles.gameShortcut}
-        label="Game"
-        emoji="🎮"
-        onClick={() => onShortcutClick(8)}
-        theme={theme}
-        icon={Gamepad2}
-      /> */}
+      {/* Lesson learned: Don't give a component ClassName */}
+      <div className={styles.gameShortcut}>
+        <Shortcut
+          label={shortcuts[7].label}
+          emoji={shortcuts[7].emoji}
+          onClick={() => onShortcutClick(8)}
+          theme={theme}
+          icon={shortcuts[7].icon}
+        />
+      </div>
     </div>
   );
 }
