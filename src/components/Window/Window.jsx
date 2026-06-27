@@ -28,15 +28,23 @@ function Window({
   const resizeOffset = useRef({ x: 0, y: 0 });
 
   const handleMouseDown = (e) => {
+    if (isMaximized) {
+      return;
+    }
+
     dragOffset.current = {
-      x: e.clientX,
-      y: e.clientY,
+      x: e.clientX - position.x,
+      y: e.clientY - position.y,
     };
     isDragging.current = true;
   };
 
   useEffect(() => {
     const handleMouseMove = (e) => {
+      if (isMaximized) {
+        return;
+      }
+
       if (isDragging.current) {
         setPosition({
           x: e.clientX - dragOffset.current.x,
@@ -117,10 +125,12 @@ function Window({
         </button>
       </div>
       <div className={styles.windowContent}>{children}</div>
-      <div
-        className={styles.resizeHandle}
-        onMouseDown={handleResizeMouseDown}
-      ></div>
+      {!isMaximized && (
+        <div
+          className={styles.resizeHandle}
+          onMouseDown={handleResizeMouseDown}
+        ></div>
+      )}
     </div>
   );
 }

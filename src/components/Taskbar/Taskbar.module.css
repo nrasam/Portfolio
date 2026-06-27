@@ -1,3 +1,7 @@
+:root {
+  font-family: system-ui;
+}
+
 button {
   font-size: 1rem;
   font-weight: 500;
@@ -5,34 +9,45 @@ button {
 }
 
 [data-theme="default"] .taskbar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
   height: var(--taskbar-height);
   background-color: rgba(30, 41, 59, 0.95);
   /* This blurs whatever is behind a semi-transparent element — gives that frosted-glass modern OS look */
   backdrop-filter: blur(12px);
   border-top: 1px solid #334155;
   display: flex;
+  align-items: center;
   justify-content: space-between;
   /* Horizontal padding */
-  padding: 6px;
+  padding: 0.5rem;
 
-  font-size: 0.875rem;
+  /* font-size: 0.875rem; */
 }
 
 [data-theme="default"] .startBtn {
-  height: 40px;
+  height: 2.5rem;
   /* Horizontal padding */
-  padding: 0px 16px;
-  border-radius: 5px;
+  padding: 0 1rem;
+  border-radius: 0.25rem;
   background: transparent;
   border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem; /* space between icon and text */
   color: white;
-  font-family: system-ui;
+  transition: background-color 150ms;
+  /* font-family: system-ui; */
+  /* font-family: system-ui;
   font-size: 0.875rem;
   font-weight: 500;
   display: flex;
   align-items: center;
   gap: 8px; /* space between icon and text */
-  flex: 2;
+  /* flex: 2;  */
 }
 
 [data-theme="default"] .startBtn:hover {
@@ -40,19 +55,33 @@ button {
 }
 
 [data-theme="default"] .startIcon {
-  width: 20px;
-  height: 20px;
-  background: linear-gradient(135deg, #60a5fa 0%, #2563eb 100%);
-  border-radius: 2px;
+  width: 1.25rem;
+  height: 1.25rem;
+  background: linear-gradient(to bottom right, #60a5fa, #2563eb);
+  border-radius: 0.125rem;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 [data-theme="default"] .startIconInner {
-  width: 12px;
-  height: 12px;
+  width: 0.75rem;
+  height: 0.75rem;
   border: 2px solid rgba(255, 255, 255, 0.8);
+}
+
+.startLabel {
+  font-size: 0.875rem;
+  font-weight: 500;
+  /* font-family: system-ui; */
+}
+
+.taskbarShortcuts {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  flex: 1;
+  justify-content: center;
 }
 
 [data-theme="default"] .appBtn {
@@ -61,14 +90,13 @@ button {
   padding: 0rem 1rem;
   border-radius: 0.25rem;
   background-color: transparent;
-  color: white;
   border: none;
   cursor: pointer;
   display: flex;
   align-items: center;
   gap: 0.5rem;
   transition: all 150ms;
-  flex: 1;
+  color: white;
 }
 
 [data-theme="default"] .appBtnActive {
@@ -76,40 +104,74 @@ button {
   /* Horizontal padding */
   padding: 0rem 1rem;
   border-radius: 0.25rem;
-  color: white;
+  background-color: transparent;
   border: none;
   cursor: pointer;
   display: flex;
   align-items: center;
   gap: 0.5rem;
   transition: all 150ms;
-  flex: 1;
+  color: white;
 
   background-color: rgba(255, 255, 255, 0.2);
   border-bottom: 2px solid #60a5fa;
 }
 
+.appLabel {
+  font-size: 0.875rem;
+  color: white;
+  max-width: 120px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 [data-theme="default"] .appBtn:hover {
-  background-color: rgba(61, 65, 86);
+  /* background-color: rgba(61, 65, 86); */
+  background: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="default"] .systemTray {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: #cbd5e1;
+}
+
+.trayIcon {
+  width: 1rem;
+  height: 1rem;
+}
+
+.settingsBtn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: white;
+  padding: 0.375rem;
+  border-radius: 0.25rem;
+  display: flex;
+  align-items: center;
+  transition: background-color 150ms;
+}
+
+.settingsBtn:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.clock {
+  font-size: 0.75rem;
+  text-align: right;
+  padding-left: 1rem;
 }
 
 [data-theme="default"] .time {
-  font: 14px;
-  font-size: medium;
-  color: #cbd5e1;
-  flex: 1;
+  color: white;
+  font-weight: 500;
 }
 
 [data-theme="default"] .date {
-  font: 12px;
   color: #cbd5e1;
-  flex: 1;
-}
-
-[data-theme="default"] .tray {
-  font: 12px;
-  color: #cbd5e1;
-  flex: 1;
 }
 
 [data-theme="xp"] .taskbar {

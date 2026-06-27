@@ -20,6 +20,7 @@ import {
   BarChart3,
   Folder,
   Settings,
+  Gamepad2,
 } from "lucide-react";
 
 const shortcutItems = [
@@ -65,6 +66,13 @@ const shortcutItems = [
     emoji: "⚙",
     icon: Settings,
     content: <p>Settings</p>,
+  },
+  {
+    id: 8,
+    label: "Game",
+    emoji: "🎮",
+    icon: Gamepad2,
+    content: <p>Game</p>,
   },
 ];
 
