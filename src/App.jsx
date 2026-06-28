@@ -186,6 +186,7 @@ function App() {
         onShortcutClick={handleShortcutClick}
         theme={theme}
         themeConfig={themeConfigs[theme]}
+        anyOpenWindows={openWindows.length > 0}
       />
 
       {openWindows.map((window) => {
@@ -201,6 +202,7 @@ function App() {
             zIndex={window.zIndex}
             onFocus={() => handleOnFocus(window.id)}
             isMinimized={window.minimized}
+            icon={shortcut.icon}
           >
             {shortcut.content}
           </Window>

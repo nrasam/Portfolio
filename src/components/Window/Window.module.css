@@ -1,4 +1,14 @@
-.window {
+[data-theme="default"] .window {
+  position: absolute;
+  background: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+[data-theme="xp"] .window {
   background-color: var(--window-bg);
   position: absolute;
   /* visibility: hidden; */
@@ -14,7 +24,51 @@
   overflow: hidden;
 }
 
-.ribbon {
+[data-theme="default"] .ribbon {
+  height: 2.5rem;
+  background: linear-gradient(to right, #334155, #475569);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  cursor: move;
+
+  /* prevents the user from selecting (highlighting) the text or element with their mouse or keyboard. */
+  user-select: none;
+}
+
+[data-theme="default"] .titleContainer {
+  display: flex;
+  /* align-items: center; */
+  gap: 0.5rem;
+  color: white;
+}
+
+[data-theme="default"] .titleIcon {
+  font-size: 0.875rem;
+}
+
+[data-theme="default"] .titleText {
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+[data-theme="default"] .windowControls {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+[data-theme="default"] .controlBtn {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 0.25rem;
+  display: flex;
+  align-items: center;
+}
+
+[data-theme="xp"] .ribbon {
   display: flex;
   border: 1px solid;
   border-color: var(--ribbon-border-color-top-left)
@@ -30,14 +84,15 @@
   );
 
   cursor: move;
+  user-select: none;
 }
 
-.ribbon p {
+[data-theme="xp"] .ribbon p {
   flex: 10;
   text-shadow: 1px 1px 1px var(--ribbon-text-shadow-color);
 }
 
-.ribbon button {
+[data-theme="xp"] .ribbon button {
   flex: 0 0 21px;
 
   /* height: 21px;
@@ -55,7 +110,7 @@
   );
 }
 
-.ribbon button:active {
+[data-theme="xp"] .ribbon button:active {
   /* Inverted border color and gradient */
   border: 1px solid;
   border-color: var(--btn-border-dark) var(--btn-border-light)
@@ -70,15 +125,15 @@
   );
 }
 
-.closeBtn:hover {
+[data-theme="xp"] .closeBtn:hover {
   background-color: var(--window-close-btn-hover-color);
 }
 
-.windowContent {
+[data-theme="xp"] .windowContent {
   /* background-color: rgb(86, 134, 177); */
 }
 
-.resizeHandle {
+[data-theme="xp"] .resizeHandle {
   position: absolute;
   bottom: 0;
   right: 0;

@@ -1,5 +1,6 @@
 import styles from "./Window.module.css";
 import { useEffect, useRef, useState } from "react";
+import { X, Minus, Maximize2, Minimize2 } from "lucide-react";
 
 function Window({
   title,
@@ -9,6 +10,8 @@ function Window({
   zIndex,
   onFocus,
   isMinimized,
+  theme,
+  icon: Icon,
 }) {
   // const randomStartingPositionOffset = Math.floor(Math.random() * 25) + 1;
   const randomStartingPositionOffset = 0;
@@ -103,6 +106,39 @@ function Window({
     resizeOffset.current = { x: e.clientX, y: e.clientY };
   };
 
+  if (theme) {
+    return (
+      <div
+        className={styles.window}
+        style={{
+          left: position.x,
+          top: position.y,
+          height: size.height,
+          width: size.width,
+          zIndex: zIndex,
+          visibility: isMinimized ? "hidden" : "visible",
+        }}
+        onMouseDown={onFocus}
+      >
+        <div className={styles.ribbon} onMouseDown={handleMouseDown}>
+          <p>{title}</p>
+          <button onClick={onMinimizeClick}>-</button>
+          <button onClick={handleMaximizeWindow}>□</button>
+          <button className={styles.closeBtn} onClick={onCloseClick}>
+            <X />
+          </button>
+        </div>
+        <div className={styles.windowContent}>{children}</div>
+        {!isMaximized && (
+          <div
+            className={styles.resizeHandle}
+            onMouseDown={handleResizeMouseDown}
+          ></div>
+        )}
+      </div>
+    );
+  }
+
   return (
     <div
       className={styles.window}
@@ -117,12 +153,30 @@ function Window({
       onMouseDown={onFocus}
     >
       <div className={styles.ribbon} onMouseDown={handleMouseDown}>
-        <p>{title}</p>
-        <button onClick={onMinimizeClick}>-</button>
-        <button onClick={handleMaximizeWindow}>□</button>
-        <button className={styles.closeBtn} onClick={onCloseClick}>
-          X
-        </button>
+        <div className={styles.titleContainer}>
+          <div className={styles.titleIcon}>
+            <Icon size={20} />
+          </div>
+          <span className={styles.titleText}>{title}</span>
+        </div>
+        <div className={styles.windowControls}>
+          <button className={styles.controlBtn} onClick={onMinimizeClick}>
+            <Minus className={styles.controlBtnIcon} />
+          </button>
+          <button className={styles.controlBtn} onClick={handleMaximizeWindow}>
+            {isMaximized ? (
+              <Minimize2 className={styles.controlBtnIcon} />
+            ) : (
+              <Maximize2 className={styles.controlBtnIcon} />
+            )}
+          </button>
+          <button
+            className={`${styles.controlBtn} ${styles.closeBtn}`}
+            onClick={onCloseClick}
+          >
+            <X className={styles.controlBtnIcon} />
+          </button>
+        </div>
       </div>
       <div className={styles.windowContent}>{children}</div>
       {!isMaximized && (

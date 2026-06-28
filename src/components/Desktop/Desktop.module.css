@@ -49,16 +49,27 @@
   gap: 1rem;
 }
 
-.welcomeContainer {
+.welcomeOverlay {
+  /* so it doesn't block clicks to whatever's underneath it */
+  pointer-events: none;
+
   position: absolute;
   inset: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  pointer-events: none;
+  flex-direction: column;
 }
 
-.welcomeSubheader {
+.welcomeTitle {
+  font-size: 3.75rem;
+  font-weight: 700;
+  color: white;
+  filter: drop-shadow(0 25px 25px rgba(0, 0, 0, 0.15));
+  margin-bottom: 1rem;
+}
+
+.welcomeSubtitle {
   font-size: 1.5rem;
   color: rgba(255, 255, 255, 0.9);
   filter: drop-shadow(0 10px 8px rgba(0, 0, 0, 0.04))
@@ -66,7 +77,7 @@
   margin-bottom: 2rem;
 }
 
-.welcomeBtnContainer {
+.welcomeActions {
   display: flex;
   gap: 1rem;
   justify-content: center;
@@ -87,7 +98,14 @@
     0 8px 10px -6px rgba(0, 0, 0, 0.1);
 }
 
+.getStartedBtn:hover {
+  background: #f1f5f9;
+}
+
 .viewProjectsBtn {
+  /* override the parent and remain clickable */
+  pointer-events: auto;
+
   padding: 0.75rem 1.5rem;
   background: #2563eb;
   color: white;
@@ -101,9 +119,6 @@
     0 8px 10px -6px rgba(0, 0, 0, 0.1);
 }
 
-.gameShortcut {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  background: linear-gradient(135deg, #c084fc, #ec4899);
+.viewProjectsBtn:hover {
+  background: #1d4ed8;
 }

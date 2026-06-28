@@ -17,7 +17,8 @@
   background: rgba(37, 99, 235, 0.4);
 }
 
-.shortcut:hover .iconContainer {
+.shortcut:hover .iconContainer,
+.shortcut:hover .gameIconContainer {
   /* Pop up icon from within the icon container */
   transform: scale(1.1);
 }
@@ -36,6 +37,19 @@
   color: #334155;
 }
 
+[data-theme="default"] .gameIconContainer {
+  width: 2.5rem;
+  height: 2.5rem;
+  background: linear-gradient(to bottom right, #c084fc, #ec4899);
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  transition: transform 150ms;
+}
+
 [data-theme="default"] .label {
   font-size: 0.75rem;
   font-weight: 500;
@@ -47,4 +61,36 @@
     than drawing a shadow behind a rectangle */
   /* drop-shadow(horizontal offset, vertical offset, blur radius, color)  */
   filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.8));
+}
+
+.gameCorner {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+.gameBadge {
+  position: absolute;
+  top: -0.25rem;
+  right: -0.25rem;
+  background: #ef4444;
+  color: white;
+  font-size: 0.75rem;
+  padding: 0.125rem 0.5rem;
+  border-radius: 9999px;
+  font-weight: 700;
+
+  animation: pulse 2s ease-in-out infinite;
+
+  z-index: 2;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
 }
