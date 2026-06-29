@@ -12,13 +12,15 @@ function Window({
   isMinimized,
   theme,
   icon: Icon,
+  openOrder,
 }) {
-  // const randomStartingPositionOffset = Math.floor(Math.random() * 25) + 1;
-  const randomStartingPositionOffset = 0;
-  const [position, setPosition] = useState({
-    x: 100 + randomStartingPositionOffset,
-    y: 100 + randomStartingPositionOffset,
-  });
+  // Cascades newly opened windows
+  // Using () => () stops the calculation from re-running pointlessly
+  const [position, setPosition] = useState(() => ({
+    x: 100 + (openOrder % 5) * 40 + Math.floor(Math.random() * 30) - 15,
+    y: 100 + (openOrder % 5) * 40 + Math.floor(Math.random() * 30) - 15,
+  }));
+
   const [size, setSize] = useState({ height: 350, width: 500 });
 
   const isDragging = useRef(false);
@@ -29,6 +31,11 @@ function Window({
 
   const isResizing = useRef(false);
   const resizeOffset = useRef({ x: 0, y: 0 });
+
+  const resizeStartSize = useRef({ width: 0, height: 0 });
+
+  const MIN_HEIGHT = 100;
+  const MIN_WIDTH = 100;
 
   const handleMouseDown = (e) => {
     if (isMaximized) {
@@ -59,12 +66,24 @@ function Window({
         const heightDelta = e.clientY - resizeOffset.current.y;
         const widthDelta = e.clientX - resizeOffset.current.x;
 
-        const prevHeight = size.height;
-        const prevWidth = size.width;
+        let newHeight = resizeStartSize.current.height + heightDelta;
+        let newWidth = resizeStartSize.current.width + widthDelta;
+
+        if (newHeight < MIN_HEIGHT) {
+          newHeight = MIN_HEIGHT;
+          resizeStartSize.current.height = MIN_HEIGHT; // re-anchor size
+          resizeOffset.current.y = e.clientY; // re-anchor mouse position
+        }
+
+        if (newWidth < MIN_WIDTH) {
+          newWidth = MIN_WIDTH;
+          resizeStartSize.current.width = MIN_WIDTH;
+          resizeOffset.current.x = e.clientX;
+        }
 
         setSize({
-          height: prevHeight + heightDelta,
-          width: prevWidth + widthDelta,
+          height: newHeight,
+          width: newWidth,
         });
       }
     };
@@ -82,7 +101,7 @@ function Window({
       document.removeEventListener("mousemove", handleMouseMove);
       document.removeEventListener("mouseup", handleMouseUp);
     };
-  }, []);
+  }, [isMaximized]);
 
   const handleMaximizeWindow = () => {
     const currentMaxState = !isMaximized;
@@ -104,6 +123,7 @@ function Window({
   const handleResizeMouseDown = (e) => {
     isResizing.current = true;
     resizeOffset.current = { x: e.clientX, y: e.clientY };
+    resizeStartSize.current = { width: size.width, height: size.height };
   };
 
   if (theme) {

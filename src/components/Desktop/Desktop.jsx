@@ -50,8 +50,18 @@ function Desktop({
             Explore the desktop to learn more about me!
           </p>
           <div className={styles.welcomeActions}>
-            <button className={styles.getStartedBtn}>Get Started</button>
-            <button className={styles.viewProjectsBtn}>View Projects</button>
+            <button
+              className={styles.getStartedBtn}
+              onClick={() => onShortcutClick(1)}
+            >
+              Get Started
+            </button>
+            <button
+              className={styles.viewProjectsBtn}
+              onClick={() => onShortcutClick(6)}
+            >
+              View Projects
+            </button>
           </div>
         </div>
       )}

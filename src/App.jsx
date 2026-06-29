@@ -189,7 +189,7 @@ function App() {
         anyOpenWindows={openWindows.length > 0}
       />
 
-      {openWindows.map((window) => {
+      {openWindows.map((window, index) => {
         // Find the shortcut with the same id as the window
         const shortcut = shortcutItems.find((item) => item.id === window.id);
 
@@ -203,6 +203,7 @@ function App() {
             onFocus={() => handleOnFocus(window.id)}
             isMinimized={window.minimized}
             icon={shortcut.icon}
+            openOrder={index}
           >
             {shortcut.content}
           </Window>
