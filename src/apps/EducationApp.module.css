@@ -1,0 +1,172 @@
+.container {
+  padding: 2rem;
+}
+
+.inner {
+  max-width: 56rem;
+  margin: 0 auto;
+}
+
+.educationSection {
+  margin-bottom: 3rem;
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.sectionTitle {
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.eduList {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.eduCard {
+  background: linear-gradient(to right, #faf5ff, #eff6ff);
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  border: 1px solid #e9d5ff;
+}
+
+.cardTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.degree {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 0.25rem;
+}
+
+.school {
+  font-size: 1.25rem;
+  color: #9333ea;
+  margin-bottom: 0.5rem;
+}
+
+.eduDescription {
+  color: #475569;
+  margin-bottom: 0.75rem;
+}
+
+.cardMeta {
+  text-align: right;
+}
+
+.period {
+  font-size: 0.875rem;
+  color: #475569;
+  margin-bottom: 0.25rem;
+}
+
+.gpa {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #7e22ce;
+}
+
+.achievementsHeader {
+  font-weight: 600;
+  color: #334155;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.achievementsList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  list-style: none;
+}
+
+.achievementItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  color: #475569;
+}
+
+.bullet {
+  color: #9333ea;
+  margin-top: 0.25rem;
+}
+
+.certGrid {
+  display: grid;
+  /* single column when screen is less than 768px */
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .certGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.certCard {
+  background-color: white;
+  border: 2px solid #bfdbfe;
+  border-radius: 0.5rem;
+  padding: 1.25rem;
+  transition: box-shadow 0.2s;
+
+  &:hover {
+    box-shadow:
+      0 10px 15px -3px rgba(0, 0, 0, 0.1),
+      0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  }
+}
+
+.certInner {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.certIconBox {
+  width: 3rem;
+  height: 3rem;
+  background-color: #dbeafe;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.certBody {
+  flex: 1;
+}
+
+.certName {
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 0.25rem;
+}
+
+.certIssuer {
+  font-size: 0.875rem;
+  color: #2563eb;
+  margin-bottom: 0.5rem;
+}
+
+.certMeta {
+  font-size: 0.75rem;
+  color: #64748b;
+}
