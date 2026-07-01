@@ -1,0 +1,173 @@
+.container {
+  padding: 2rem;
+}
+
+.inner {
+  max-width: 48rem;
+  margin: 0 auto;
+}
+
+.profileHeader {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.avatar {
+  width: 8rem;
+  height: 8rem;
+  border-radius: 9999px;
+  background: linear-gradient(to bottom right, #3b82f6, #9333ea);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 2.25rem;
+  font-weight: 700;
+  box-shadow:
+    0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  flex-shrink: 0;
+}
+
+.profileInfo {
+  flex: 1;
+}
+
+.name {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 0.5rem;
+}
+
+.title {
+  font-size: 1.25rem;
+  color: #475569;
+  margin-bottom: 1rem;
+}
+
+.metaRow {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 0.875rem;
+  color: #64748b;
+  margin-bottom: 1rem;
+}
+
+.metaItem {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.socialLinks {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.btnSocial {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background-color: #2563eb;
+  color: white;
+  border-radius: 0.5rem;
+  /* Removes link underline */
+  text-decoration: none;
+  transition: background-color 0.15s;
+}
+
+.btnGithub:hover {
+  background-color: #334155;
+}
+
+.btnLinkedin:hover {
+  background-color: #1d4ed8;
+}
+
+.btnEmail {
+  background-color: #e2e8f0;
+  color: #1e293b;
+
+  &:hover {
+    background-color: #cbd5e1;
+  }
+}
+
+.aboutSection {
+  background-color: #f8fafc;
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.sectionTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 1rem;
+}
+
+.aboutText {
+  color: #475569;
+  line-height: 1.625;
+  margin-bottom: 1rem;
+}
+
+.statsGrid {
+  display: grid;
+  /* 3 columns split evenly */
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.statCardBlue {
+  background-color: #eff6ff;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  text-align: center;
+}
+
+.statCardPurple {
+  background-color: #faf5ff;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  text-align: center;
+}
+
+.statCardGreen {
+  background-color: #f0fdf4;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  text-align: center;
+}
+
+.statNumberBlue {
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: #2563eb;
+  margin-bottom: 0.25rem;
+}
+
+.statNumberPurple {
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: #9333ea;
+  margin-bottom: 0.25rem;
+}
+
+.statNumberGreen {
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: #16a34a;
+  margin-bottom: 0.25rem;
+}
+
+.statLabel {
+  font-size: 0.875rem;
+  color: #475569;
+}

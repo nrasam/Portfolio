@@ -21,7 +21,7 @@ function Window({
     y: 100 + (openOrder % 5) * 40 + Math.floor(Math.random() * 30) - 15,
   }));
 
-  const [size, setSize] = useState({ height: 350, width: 500 });
+  const [size, setSize] = useState({ height: 500, width: 600 });
 
   const isDragging = useRef(false);
   const dragOffset = useRef({ x: 0, y: 0 });
