@@ -8,6 +8,8 @@
   flex-direction: column;
 
   min-height: 100px;
+
+  /* resize: both; */
 }
 
 [data-theme="xp"] .window {
@@ -104,6 +106,8 @@
   cursor: se-resize;
   background: linear-gradient(135deg, transparent 50%, #a09888 50%);
   user-select: none;
+
+  /* visibility: hidden; */
 }
 
 [data-theme="xp"] .ribbon {

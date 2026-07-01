@@ -1,0 +1,267 @@
+.container {
+  padding: 2rem;
+}
+
+.inner {
+  max-width: 64rem;
+  margin: 0 auto;
+}
+
+.pageHeader {
+  margin-bottom: 2rem;
+}
+
+.pageTitle {
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 0.5rem;
+}
+
+.pageSubtitle {
+  color: #475569;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+/* apply when the screen is 768px wide or larger*/
+@media (min-width: 768px) {
+  .grid {
+    /* create 2 equal-width columns */
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.contactInfoBox {
+  background: linear-gradient(to bottom right, #eff6ff, #faf5ff);
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.infoTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 1rem;
+}
+
+.infoList {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.infoItem {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.iconBoxBlue {
+  width: 2.5rem;
+  height: 2.5rem;
+  background-color: #2563eb;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  flex-shrink: 0;
+}
+
+.iconBoxGreen {
+  width: 2.5rem;
+  height: 2.5rem;
+  background-color: #16a34a;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  flex-shrink: 0;
+}
+
+.iconBoxPurple {
+  width: 2.5rem;
+  height: 2.5rem;
+  background-color: #9333ea;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  flex-shrink: 0;
+}
+
+.infoLabel {
+  font-size: 0.875rem;
+  color: #475569;
+}
+
+.infoValue {
+  font-weight: 500;
+  color: #1e293b;
+}
+
+.socialBox {
+  background-color: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+}
+
+.socialTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 1rem;
+}
+
+.socialList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.socialLink {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  transition: background-color 0.15s;
+
+  &:hover {
+    background-color: #f8fafc;
+  }
+}
+
+.socialIconGithub {
+  width: 2.5rem;
+  height: 2.5rem;
+  background-color: #1e293b;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  transition: background-color 0.15s;
+  flex-shrink: 0;
+}
+
+.socialLink:hover .socialIconGithub {
+  background-color: #334155;
+}
+
+.socialIconLinkedin {
+  width: 2.5rem;
+  height: 2.5rem;
+  background-color: #2563eb;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  transition: background-color 0.15s;
+  flex-shrink: 0;
+}
+
+.socialLink:hover .socialIconLinkedin {
+  background-color: #1d4ed8;
+}
+
+.socialName {
+  font-weight: 500;
+  color: #1e293b;
+}
+
+.socialHandle {
+  font-size: 0.875rem;
+  color: #64748b;
+}
+
+.formBox {
+  background-color: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+}
+
+.formTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 1rem;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #334155;
+  margin-bottom: 0.5rem;
+}
+
+.input {
+  width: 100%;
+  padding: 0.5rem 1rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 0.5rem;
+  /* Removes the default browser focus outline */
+  outline: none;
+  font-size: 1rem;
+
+  &:focus {
+    box-shadow: 0 0 0 2px #3b82f6;
+    border-color: transparent;
+  }
+}
+
+.textarea {
+  width: 100%;
+  padding: 0.5rem 1rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 0.5rem;
+  outline: none;
+  resize: none;
+  box-sizing: border-box;
+  font-size: 1rem;
+
+  &:focus {
+    box-shadow: 0 0 0 2px #3b82f6;
+    border-color: transparent;
+  }
+}
+
+.submitBtn {
+  width: 100%;
+  background-color: #2563eb;
+  color: white;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.15s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: 1rem;
+
+  &:hover {
+    background-color: #1d4ed8;
+  }
+}
