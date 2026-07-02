@@ -169,6 +169,7 @@ function Window({
         width: size.width,
         zIndex: zIndex,
         visibility: isMinimized ? "hidden" : "visible",
+        overflow: isMaximized ? "visible" : "hidden",
       }}
       onMouseDown={onFocus}
     >
