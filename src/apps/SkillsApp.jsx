@@ -1,5 +1,6 @@
 import { Code2, Database, Cloud, Wrench } from "lucide-react";
 import styles from "./SkillsApp.module.css";
+import { useEffect, useState } from "react";
 
 const skillCategories = [
   {
@@ -91,6 +92,15 @@ const colorMap = {
 };
 
 function SkillsApp() {
+  const [animated, setAnimated] = useState(false);
+
+  useEffect(() => {
+    // after a tiny delay set animated to true so the bar fill animates from 0 to its actual value
+    // a tiny delay guarantees the browser sees 0 first, then sees the change to the real width
+    const timer = setTimeout(() => setAnimated(true), 50);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <div className={styles.container}>
       <div className={styles.inner}>
@@ -140,8 +150,9 @@ function SkillsApp() {
                         <div
                           className={styles.barFill}
                           style={{
-                            width: `${skill.level}%`,
+                            width: animated ? `${skill.level}%` : "0%",
                             backgroundColor: colors.barColor,
+                            transitionDelay: `${idx * 0.2}s`, // Adds a staggered delay
                           }}
                         />
                       </div>
