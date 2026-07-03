@@ -8,6 +8,7 @@ import EducationApp from "./apps/EducationApp";
 import ExperienceApp from "./apps/ExperienceApp";
 import ProjectsApp from "./apps/ProjectsApp";
 import SkillsApp from "./apps/SkillsApp";
+import SettingsApp from "./apps/SettingsApp";
 
 import "./App.css";
 import "./themes.css";
@@ -65,7 +66,7 @@ const shortcutItems = [
     label: "Settings",
     emoji: "⚙",
     icon: Settings,
-    content: <p>Settings</p>,
+    content: <SettingsApp />,
   },
   {
     id: 8,
