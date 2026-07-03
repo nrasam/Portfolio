@@ -126,7 +126,7 @@ function Window({
     resizeStartSize.current = { width: size.width, height: size.height };
   };
 
-  if (theme) {
+  if (theme === "xp") {
     return (
       <div
         className={styles.window}

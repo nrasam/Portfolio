@@ -43,7 +43,7 @@ const themes = [
     },
   },
   {
-    id: "retro",
+    id: "xp",
     name: "Retro XP",
     description: "Classic Windows XP nostalgia",
     preview:
@@ -55,7 +55,7 @@ const themes = [
   },
 ];
 
-function SettingsApp({ currentTheme }) {
+function SettingsApp({ currentTheme, onThemeChange }) {
   return (
     <div className={styles.container}>
       <div className={styles.inner}>
@@ -74,6 +74,7 @@ function SettingsApp({ currentTheme }) {
             {themes.map((theme) => (
               <button
                 key={theme.id}
+                onClick={() => onThemeChange(theme.id)}
                 className={`${styles.themeButton} ${currentTheme === theme.id ? styles.themeButtonActive : styles.themeButtonInactive}`}
               >
                 {/* Preview */}
@@ -90,6 +91,11 @@ function SettingsApp({ currentTheme }) {
                       {theme.description}
                     </p>
                   </div>
+                  {currentTheme === theme.id && (
+                    <div className={styles.checkBadge}>
+                      <Check style={{ color: "white" }} />
+                    </div>
+                  )}
                 </div>
 
                 {/* Color Swatches */}

@@ -14,7 +14,8 @@ function Shortcut({
       <button type="button" className={styles.shortcut} onDoubleClick={onClick}>
         {badgeClass && <div className={styles[badgeClass]}>Fun!</div>}
         <div className={styles.gameIconContainer}>
-          {theme === "default" ? <Icon size={20} /> : <span>{emoji}</span>}
+          {/* {theme === "default" ? <Icon size={20} /> : <span>{emoji}</span>} */}
+          <Icon size={20} />
         </div>
         <span className={styles.label}>{label}</span>
       </button>
@@ -23,7 +24,8 @@ function Shortcut({
     <button type="button" className={styles.shortcut} onDoubleClick={onClick}>
       {badgeClass && <div className={styles[badgeClass]}>Fun!</div>}
       <div className={styles.iconContainer}>
-        {theme === "default" ? <Icon size={20} /> : <span>{emoji}</span>}
+        {/* {theme === "default" ? <Icon size={20} /> : <span>{emoji}</span>} */}
+        <Icon size={20} />
       </div>
       <span className={styles.label}>{label}</span>
     </button>

@@ -24,59 +24,6 @@ import {
   Gamepad2,
 } from "lucide-react";
 
-const shortcutItems = [
-  { id: 1, label: "About Me", emoji: "🧑🏻", icon: User, content: <AboutApp /> },
-  {
-    id: 2,
-    label: "Contact Me",
-    emoji: "📧",
-    icon: Mail,
-    content: <ContactApp />,
-  },
-  {
-    id: 3,
-    label: "Education",
-    emoji: "🎓",
-    icon: GraduationCap,
-    content: <EducationApp />,
-  },
-  {
-    id: 4,
-    label: "Experience",
-    emoji: "💼",
-    icon: Briefcase,
-    content: <ExperienceApp />,
-  },
-  {
-    id: 5,
-    label: "Skills",
-    emoji: "📊",
-    icon: BarChart3,
-    content: <SkillsApp />,
-  },
-  {
-    id: 6,
-    label: "My Projects",
-    emoji: "⚡",
-    icon: Folder,
-    content: <ProjectsApp />,
-  },
-  {
-    id: 7,
-    label: "Settings",
-    emoji: "⚙",
-    icon: Settings,
-    content: <SettingsApp />,
-  },
-  {
-    id: 8,
-    label: "Game",
-    emoji: "🎮",
-    icon: Gamepad2,
-    content: <p>Game</p>,
-  },
-];
-
 // Theme config
 const themeConfigs = {
   default: {
@@ -110,6 +57,71 @@ function App() {
   const [highestZIndex, setHighestZIndex] = useState(1);
 
   const [theme, setTheme] = useState("default");
+
+  const onThemeChange = (theme) => {
+    setTheme(theme);
+  };
+
+  const shortcutItems = [
+    {
+      id: 1,
+      label: "About Me",
+      emoji: "🧑🏻",
+      icon: User,
+      content: <AboutApp />,
+    },
+    {
+      id: 2,
+      label: "Contact Me",
+      emoji: "📧",
+      icon: Mail,
+      content: <ContactApp />,
+    },
+    {
+      id: 3,
+      label: "Education",
+      emoji: "🎓",
+      icon: GraduationCap,
+      content: <EducationApp />,
+    },
+    {
+      id: 4,
+      label: "Experience",
+      emoji: "💼",
+      icon: Briefcase,
+      content: <ExperienceApp />,
+    },
+    {
+      id: 5,
+      label: "Skills",
+      emoji: "📊",
+      icon: BarChart3,
+      content: <SkillsApp />,
+    },
+    {
+      id: 6,
+      label: "My Projects",
+      emoji: "⚡",
+      icon: Folder,
+      content: <ProjectsApp />,
+    },
+    {
+      id: 7,
+      label: "Settings",
+      emoji: "⚙",
+      icon: Settings,
+      content: (
+        <SettingsApp currentTheme={theme} onThemeChange={onThemeChange} />
+      ),
+    },
+    {
+      id: 8,
+      label: "Game",
+      emoji: "🎮",
+      icon: Gamepad2,
+      content: <p>Game</p>,
+    },
+  ];
 
   const handleShortcutClick = (id) => {
     // is the id in the windows array?

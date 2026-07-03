@@ -1,4 +1,4 @@
-[data-theme="default"] .window {
+.window {
   position: absolute;
   background: white;
   border-radius: 0.5rem;
@@ -28,7 +28,7 @@
   overflow: hidden;
 }
 
-[data-theme="default"] .ribbon {
+.ribbon {
   height: 2.5rem;
   background: linear-gradient(to right, #334155, #475569);
   display: flex;
@@ -42,29 +42,29 @@
   user-select: none;
 }
 
-[data-theme="default"] .titleContainer {
+.titleContainer {
   display: flex;
   /* align-items: center; */
   gap: 0.5rem;
   color: white;
 }
 
-[data-theme="default"] .titleIcon {
+.titleIcon {
   font-size: 0.875rem;
 }
 
-[data-theme="default"] .titleText {
+.titleText {
   font-size: 0.875rem;
   font-weight: 500;
 }
 
-[data-theme="default"] .windowControls {
+.windowControls {
   display: flex;
   align-items: center;
   gap: 0.25rem;
 }
 
-[data-theme="default"] .controlBtn {
+.controlBtn {
   width: 2rem;
   height: 2rem;
   border-radius: 0.25rem;
@@ -78,26 +78,26 @@
   transition: background-color 150ms;
 }
 
-[data-theme="default"] .controlBtn:hover {
+.controlBtn:hover {
   background: rgba(255, 255, 255, 0.2);
 }
 
-[data-theme="default"] .closeBtn:hover {
+.closeBtn:hover {
   background-color: #ef4444;
 }
 
-[data-theme="default"] .controlBtnIcon {
+.controlBtnIcon {
   width: 1rem;
   height: 1rem;
 }
 
-[data-theme="default"] .windowContent {
+.windowContent {
   flex: 1;
   overflow: auto;
   background: white;
 }
 
-[data-theme="default"] .resizeHandle {
+.resizeHandle {
   position: absolute;
   bottom: 0;
   right: 0;

@@ -1,4 +1,4 @@
-[data-theme="default"] .desktop {
+.desktop {
   /* flex: 1; */
   background: linear-gradient(135deg, #60a5fa 0%, #a855f7 50%, #ec4899 100%);
   overflow: hidden;

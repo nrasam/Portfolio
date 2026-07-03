@@ -8,7 +8,7 @@ button {
   line-height: 1.5;
 }
 
-[data-theme="default"] .taskbar {
+.taskbar {
   position: fixed;
   bottom: 0;
   left: 0;
@@ -27,7 +27,7 @@ button {
   /* font-size: 0.875rem; */
 }
 
-[data-theme="default"] .startBtn {
+.startBtn {
   height: 2.5rem;
   /* Horizontal padding */
   padding: 0 1rem;
@@ -50,7 +50,7 @@ button {
   /* flex: 2;  */
 }
 
-[data-theme="default"] .startBtn:hover {
+.startBtn:hover {
   background-color: rgba(255, 255, 255, 0.1);
 }
 
@@ -64,7 +64,7 @@ button {
   justify-content: center;
 }
 
-[data-theme="default"] .startIconInner {
+.startIconInner {
   width: 0.75rem;
   height: 0.75rem;
   border: 2px solid rgba(255, 255, 255, 0.8);
@@ -84,7 +84,7 @@ button {
   justify-content: center;
 }
 
-[data-theme="default"] .appBtn {
+.appBtn {
   height: 2.5rem;
   /* Horizontal padding */
   padding: 0rem 1rem;
@@ -99,7 +99,7 @@ button {
   color: white;
 }
 
-[data-theme="default"] .appBtnActive {
+.appBtnActive {
   height: 2.5rem;
   /* Horizontal padding */
   padding: 0rem 1rem;
@@ -126,12 +126,12 @@ button {
   white-space: nowrap;
 }
 
-[data-theme="default"] .appBtn:hover {
+.appBtn:hover {
   /* background-color: rgba(61, 65, 86); */
   background: rgba(255, 255, 255, 0.1);
 }
 
-[data-theme="default"] .systemTray {
+.systemTray {
   display: flex;
   align-items: center;
   gap: 0.75rem;
@@ -165,12 +165,12 @@ button {
   padding-left: 1rem;
 }
 
-[data-theme="default"] .time {
+.time {
   color: white;
   font-weight: 500;
 }
 
-[data-theme="default"] .date {
+.date {
   color: #cbd5e1;
 }
 
