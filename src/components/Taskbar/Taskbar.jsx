@@ -64,7 +64,11 @@ function TaskBar({
       </div>
       {/* System Tray */}
       <div className={styles.systemTray}>
-        <button className={styles.settingsBtn} title="Settings">
+        <button
+          className={styles.settingsBtn}
+          title="Settings"
+          onClick={() => onTaskbarClick(7)}
+        >
           <Settings className={styles.trayIcon} size={20} />
         </button>
         <Wifi className={styles.trayIcon} size={20} />
