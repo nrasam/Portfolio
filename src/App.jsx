@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Desktop from "./components/Desktop/Desktop";
 import TaskBar from "./components/Taskbar/Taskbar";
 import Window from "./components/Window/Window";
@@ -10,6 +10,7 @@ import ProjectsApp from "./apps/ProjectsApp";
 import SkillsApp from "./apps/SkillsApp";
 import SettingsApp from "./apps/SettingsApp";
 import Game from "./apps/Game";
+import MobileMessage from "./components/MobileMessage/MobileMessage";
 
 import "./App.css";
 import "./themes.css";
@@ -56,11 +57,15 @@ const themeConfigs = {
   },
 };
 
+const MOBILE_BREAKPOINT = 768;
+
 function App() {
   // Represents the open windows; if a window is not open, it will not show up in the array
   const [openWindows, setOpenWindows] = useState([]);
   const [highestZIndex, setHighestZIndex] = useState(1);
-
+  const [isMobile, setIsMobile] = useState(
+    window.innerWidth < MOBILE_BREAKPOINT,
+  );
   const [theme, setTheme] = useState("default");
 
   const onThemeChange = (theme) => {
@@ -196,6 +201,20 @@ function App() {
       setHighestZIndex(highestZIndex + 1);
     }
   };
+
+  // Listen for resizes
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < MOBILE_BREAKPOINT);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  if (isMobile) {
+    return <MobileMessage />;
+  }
 
   return (
     <div className="app" data-theme={theme}>
