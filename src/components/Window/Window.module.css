@@ -8,24 +8,21 @@
 
   min-height: 100px;
   min-width: 100px;
-
-  /* resize: both; */
 }
 
 [data-theme="xp"] .window {
-  background-color: var(--window-bg);
-  position: absolute;
-  /* visibility: hidden; */
-  top: 200px;
-  left: 200px;
-  width: 500px;
-  height: 350px;
-
-  border: 1px solid var(--window-border-color);
-  border-radius: 6px 6px 0 0;
-
   /* Stops the children elements from covering up the rounded corners */
   overflow: hidden;
+
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+
+  border: 3px solid #0055ea;
+  border-radius: 8px 8px 4px 4px;
+  box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.5) inset 0 0 0 1px
+    rgba(255, 255, 255, 0.3);
+  font-family: Tahoma, "Microsoft Sans Serif", sans-serif;
 }
 
 .ribbon {
@@ -42,114 +39,29 @@
   user-select: none;
 }
 
-.titleContainer {
-  display: flex;
-  /* align-items: center; */
-  gap: 0.5rem;
-  color: white;
-}
-
-.titleIcon {
-  font-size: 0.875rem;
-}
-
-.titleText {
-  font-size: 0.875rem;
-  font-weight: 500;
-}
-
-.windowControls {
-  display: flex;
-  align-items: center;
-  gap: 0.25rem;
-}
-
-.controlBtn {
-  width: 2rem;
-  height: 2rem;
-  border-radius: 0.25rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  transition: background-color 150ms;
-}
-
-.controlBtn:hover {
-  background: rgba(255, 255, 255, 0.2);
-}
-
-.closeBtn:hover {
-  background-color: #ef4444;
-}
-
-.controlBtnIcon {
-  width: 1rem;
-  height: 1rem;
-}
-
-.windowContent {
-  flex: 1;
-  overflow: auto;
-  background: white;
-}
-
-.resizeHandle {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  width: 14px;
-  height: 14px;
-  cursor: se-resize;
-  background: linear-gradient(135deg, transparent 50%, #a09888 50%);
-  user-select: none;
-
-  /* visibility: hidden; */
-}
-
 [data-theme="xp"] .ribbon {
   display: flex;
-  border: 1px solid;
-  border-color: var(--ribbon-border-color-top-left)
-    var(--ribbon-border-color-bottom-right)
-    var(--ribbon-border-color-bottom-right) var(--ribbon-border-color-top-left); /* top right bottom left */
-  /* linear gradient only works with background, not background color */
-  background: linear-gradient(
-    180deg,
-    var(--ribbon-gradient-start) 0%,
-    var(--ribbon-gradient-mid) 50%,
-    var(--ribbon-gradient-mid2) 51%,
-    var(--ribbon-gradient-end) 100%
-  );
-
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
   cursor: move;
   user-select: none;
+
+  height: 30px;
+  background: linear-gradient(
+    to bottom,
+    #4d9cf7 0%,
+    #1166e8 4%,
+    #1166e8 90%,
+    #0a4fcf 100%
+  );
+  border-bottom: 1px solid #0044cc;
 }
 
 [data-theme="xp"] .ribbon p {
   flex: 10;
   text-shadow: 1px 1px 1px var(--ribbon-text-shadow-color);
-}
-
-[data-theme="xp"] .ribbon button {
-  flex: 0 0 21px;
-
-  /* height: 21px;
-  width: 21px; */
-
-  border: 1px solid;
-  border-color: var(--btn-border-light) var(--btn-border-dark)
-    var(--btn-border-dark) var(--btn-border-light);
-  background: linear-gradient(
-    180deg,
-    var(--btn-gradient-start) 0%,
-    var(--btn-gradient-mid) 50%,
-    var(--btn-gradient-mid2) 51%,
-    var(--btn-gradient-end) 100%
-  );
 }
 
 [data-theme="xp"] .ribbon button:active {
@@ -167,12 +79,171 @@
   );
 }
 
-[data-theme="xp"] .closeBtn:hover {
-  background-color: var(--window-close-btn-hover-color);
+.titleContainer {
+  display: flex;
+  /* align-items: center; */
+  gap: 0.5rem;
+  color: white;
+}
+
+[data-theme="xp"] .titleContainer {
+  display: flex;
+  gap: 0.375rem;
+  min-width: 0;
+  align-items: center;
+}
+
+.titleIcon {
+  font-size: 0.875rem;
+}
+
+[data-theme="xp"] .titleIcon {
+  color: white;
+  opacity: 0.9;
+  flex-shrink: 0;
+  font-size: 13px;
+}
+
+.titleText {
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+[data-theme="xp"] .titleText {
+  color: white;
+  font-weight: 700;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  font-size: 12px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 40, 0.6);
+  letter-spacing: 0.01em;
+}
+
+.windowControls {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+[data-theme="xp"] .windowControls {
+  display: flex;
+  align-items: center;
+  gap: 0.125rem;
+  flex-shrink: 0;
+}
+
+.controlBtn {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 0.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: background-color 150ms;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+}
+
+[data-theme="xp"] .controlBtn {
+  transition: background-color 150ms;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+}
+
+[data-theme="xp"] .miniBtn {
+  width: 21px;
+  height: 21px;
+  background: linear-gradient(to bottom, #f0c040 0%, #c08000 100%);
+  border: 1px solid #805000;
+  border-radius: 3px;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.3) inset;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+}
+
+[data-theme="xp"] .maxBtn {
+  width: 21px;
+  height: 21px;
+  border-radius: 3px;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.3) inset;
+
+  background: linear-gradient(to bottom, #80e040 0%, #2a8000 100%);
+  border: 1px solid #1a6000;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+}
+
+.closeBtn:hover {
+  background-color: #ef4444;
+}
+
+[data-theme="xp"] .closeBtn {
+  width: 21px;
+  height: 21px;
+  background: linear-gradient(to bottom, #f06050 0%, #c01010 100%);
+  border: 1px solid #800000;
+  border-radius: 3px;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.3) inset;
+
+  &:hover {
+    background-color: var(--window-close-btn-hover-color);
+  }
+}
+
+.controlBtnIcon {
+  width: 1rem;
+  height: 1rem;
+}
+
+[data-theme="xp"] .controlBtnIcon {
+  width: 1rem;
+  height: 1rem;
+
+  width: 10px;
+  height: 10px;
+  color: white;
+  stroke-width: 3;
+}
+
+.windowContent {
+  flex: 1;
+  overflow: auto;
+  background: white;
 }
 
 [data-theme="xp"] .windowContent {
-  /* background-color: rgb(86, 134, 177); */
+  flex: 1;
+  overflow: auto;
+}
+
+.resizeHandle {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 14px;
+  height: 14px;
+  cursor: se-resize;
+  background: linear-gradient(135deg, transparent 50%, #a09888 50%);
+  user-select: none;
 }
 
 [data-theme="xp"] .resizeHandle {
@@ -183,4 +254,5 @@
   height: 14px;
   cursor: se-resize;
   background: linear-gradient(135deg, transparent 50%, #a09888 50%);
+  user-select: none;
 }

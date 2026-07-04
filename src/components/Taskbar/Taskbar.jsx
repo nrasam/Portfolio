@@ -33,12 +33,25 @@ function TaskBar({
 
   return (
     <div className={styles.taskbar}>
+      {/* Start Button */}
       <button className={styles.startBtn}>
         <div className={styles.startIcon}>
           <div className={styles.startIconInner}></div>
         </div>
         <span className={styles.startLabel}>Start</span>
       </button>
+
+      {/* Separator */}
+      <div
+        style={{
+          width: "1px",
+          height: "28px",
+          background: "rgba(255,255,255,0.2)",
+          margin: "0 4px",
+        }}
+      />
+
+      {/* Taskbar shortcuts */}
       <div className={styles.taskbarShortcuts}>
         {shortcutItems &&
           shortcutItems.map((shortcut) => {
@@ -52,11 +65,7 @@ function TaskBar({
                 className={isOpen ? styles.appBtnActive : styles.appBtn}
                 onClick={() => onTaskbarClick(shortcut.id)}
               >
-                {theme === "default" ? (
-                  <shortcut.icon size={20} />
-                ) : (
-                  <span>{shortcut.emoji}</span>
-                )}
+                <shortcut.icon size={20} className={styles.appIcon} />
                 <span className={styles.appLabel}>{shortcut.label}</span>
               </button>
             );
@@ -74,10 +83,10 @@ function TaskBar({
         <Wifi className={styles.trayIcon} size={20} />
         <Volume2 className={styles.trayIcon} size={20} />
         <Battery className={styles.trayIcon} size={20} />
-      </div>
-      <div className={styles.clock}>
-        <p className={styles.time}>{timeString}</p>
-        <p className={styles.date}>{dateString}</p>
+        <div className={styles.clock}>
+          <p className={styles.time}>{timeString}</p>
+          <p className={styles.date}>{dateString}</p>
+        </div>
       </div>
     </div>
   );

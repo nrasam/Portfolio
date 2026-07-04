@@ -122,3 +122,75 @@
 .viewProjectsBtn:hover {
   background: #1d4ed8;
 }
+
+[data-theme="xp"] .desktop {
+  background: linear-gradient(
+    to bottom,
+    #5b9bd1 0%,
+    #a8d0ed 42%,
+    #6ab04c 42%,
+    #4a8a2e 100%
+  );
+}
+
+[data-theme="xp"] .welcomeOverlay {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.15),
+    rgba(255, 255, 255, 0.05)
+  );
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  backdrop-filter: blur(4px);
+
+  padding: 1.5rem 2rem;
+  pointer-events: none;
+}
+
+[data-theme="xp"] .welcomeTitle {
+  color: white;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
+  font-family: Tahoma, sans-serif;
+
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+}
+
+[data-theme="xp"] .welcomeSubtitle {
+  color: white;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+  font-family: Tahoma, sans-serif;
+
+  font-size: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+[data-theme="xp"] .welcomeActions {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  pointer-events: auto;
+}
+
+[data-theme="xp"] .getStartedBtn {
+  padding: 6px 20px;
+  background: linear-gradient(to bottom, #f0f0e8 0%, #d8d0c8 100%);
+  border: 2px outset #c0b8b0;
+  border-radius: 3px;
+  font-family: Tahoma, sans-serif;
+  font-size: 13px;
+  color: #000;
+  cursor: pointer;
+}
+
+[data-theme="xp"] .viewProjectsBtn {
+  padding: "6px 20px";
+  background: linear-gradient(to bottom, #1166e8 0%, #0a44c0 100%);
+  border: 2px outset #0a44c0;
+  border-radius: 3px;
+  font-family: Tahoma, sans-serif;
+  font-size: 13px;
+  color: white;
+  cursor: pointer;
+}

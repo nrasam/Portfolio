@@ -126,39 +126,6 @@ function Window({
     resizeStartSize.current = { width: size.width, height: size.height };
   };
 
-  if (theme === "xp") {
-    return (
-      <div
-        className={styles.window}
-        style={{
-          left: position.x,
-          top: position.y,
-          height: size.height,
-          width: size.width,
-          zIndex: zIndex,
-          visibility: isMinimized ? "hidden" : "visible",
-        }}
-        onMouseDown={onFocus}
-      >
-        <div className={styles.ribbon} onMouseDown={handleMouseDown}>
-          <p>{title}</p>
-          <button onClick={onMinimizeClick}>-</button>
-          <button onClick={handleMaximizeWindow}>□</button>
-          <button className={styles.closeBtn} onClick={onCloseClick}>
-            <X />
-          </button>
-        </div>
-        <div className={styles.windowContent}>{children}</div>
-        {!isMaximized && (
-          <div
-            className={styles.resizeHandle}
-            onMouseDown={handleResizeMouseDown}
-          ></div>
-        )}
-      </div>
-    );
-  }
-
   return (
     <div
       className={styles.window}
@@ -173,24 +140,62 @@ function Window({
       }}
       onMouseDown={onFocus}
     >
+      {/* Titlebar where you can click & drag the window */}
       <div className={styles.ribbon} onMouseDown={handleMouseDown}>
+        {/* Window Title */}
         <div className={styles.titleContainer}>
           <div className={styles.titleIcon}>
             <Icon size={20} />
           </div>
           <span className={styles.titleText}>{title}</span>
         </div>
+
+        {/* Window buttons */}
         <div className={styles.windowControls}>
-          <button className={styles.controlBtn} onClick={onMinimizeClick}>
-            <Minus className={styles.controlBtnIcon} />
+          {/* Minimize button */}
+          <button
+            className={`${styles.controlBtn} ${styles.miniBtn}`}
+            // className={styles.miniBtn}
+            onClick={onMinimizeClick}
+          >
+            {theme === "xp" ? (
+              <span
+                style={{
+                  fontSize: "10px",
+                  fontWeight: "bold",
+                  color: "#3a2000",
+                  lineHeight: 1,
+                }}
+              >
+                –
+              </span>
+            ) : (
+              <Minus className={styles.controlBtnIcon} />
+            )}
           </button>
-          <button className={styles.controlBtn} onClick={handleMaximizeWindow}>
-            {isMaximized ? (
+          {/* Maximize button */}
+          <button
+            className={`${styles.controlBtn} ${styles.maxBtn}`}
+            onClick={handleMaximizeWindow}
+          >
+            {theme === "xp" ? (
+              <span
+                style={{
+                  fontSize: "9px",
+                  fontWeight: "bold",
+                  color: "#0a3000",
+                  lineHeight: 1,
+                }}
+              >
+                {isMaximized ? "❐" : "🗖"}
+              </span>
+            ) : isMaximized ? (
               <Minimize2 className={styles.controlBtnIcon} />
             ) : (
               <Maximize2 className={styles.controlBtnIcon} />
             )}
           </button>
+          {/* Close button */}
           <button
             className={`${styles.controlBtn} ${styles.closeBtn}`}
             onClick={onCloseClick}
@@ -199,12 +204,47 @@ function Window({
           </button>
         </div>
       </div>
+      {/* Content of window */}
       <div className={styles.windowContent}>{children}</div>
+      {/* Resize handle if not maximized */}
       {!isMaximized && (
         <div
           className={styles.resizeHandle}
           onMouseDown={handleResizeMouseDown}
         ></div>
+      )}
+      {theme === "xp" && (
+        <div>
+          {/* XP Menu Bar stripe */}
+          <div
+            style={{
+              height: "4px",
+              background:
+                "linear-gradient(to right, #1166e8, #4d9cf7, #1166e8)",
+            }}
+          />
+          {/* XP Status bar */}
+          <div
+            style={{
+              height: "20px",
+              background: "linear-gradient(to bottom, #d4d0c8, #c8c4bc)",
+              borderTop: "1px solid #999",
+              display: "flex",
+              alignItems: "center",
+              paddingLeft: "6px",
+            }}
+          >
+            <span
+              style={{
+                fontSize: "10px",
+                color: "#333",
+                fontFamily: "Tahoma, sans-serif",
+              }}
+            >
+              {title}
+            </span>
+          </div>
+        </div>
       )}
     </div>
   );

@@ -9,6 +9,7 @@ import ExperienceApp from "./apps/ExperienceApp";
 import ProjectsApp from "./apps/ProjectsApp";
 import SkillsApp from "./apps/SkillsApp";
 import SettingsApp from "./apps/SettingsApp";
+import Game from "./apps/Game";
 
 import "./App.css";
 import "./themes.css";
@@ -48,6 +49,10 @@ const themeConfigs = {
       "linear-gradient(135deg, #60a5fa 0%, #a855f7 50%, #ec4899 100%)",
     wallpaper:
       "https://images.unsplash.com/photo-1570824104453-508955ab713e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjdXRlJTIwa2l0dGVuc3xlbnwxfHx8fDE3Njg5MzIxMDh8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral", // cute kittens
+  },
+  xp: {
+    background: "background-color: #38bdf8;",
+    wallpaper: null,
   },
 };
 
@@ -119,7 +124,7 @@ function App() {
       label: "Game",
       emoji: "🎮",
       icon: Gamepad2,
-      content: <p>Game</p>,
+      content: <Game />,
     },
   ];
 
@@ -217,6 +222,7 @@ function App() {
             isMinimized={window.minimized}
             icon={shortcut.icon}
             openOrder={index}
+            theme={theme}
           >
             {shortcut.content}
           </Window>
