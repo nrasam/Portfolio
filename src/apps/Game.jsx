@@ -1,4 +1,4 @@
-import styles from "./Game.module.css";
+// import styles from "./Game.module.css";
 
 function Game() {
   return (

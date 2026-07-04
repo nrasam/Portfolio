@@ -265,3 +265,9 @@
     background-color: #1d4ed8;
   }
 }
+
+.submitBtn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  /* background-color: #2563eb; */
+}

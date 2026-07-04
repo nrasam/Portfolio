@@ -4,6 +4,8 @@ import { SiGithub } from "react-icons/si";
 import { useState } from "react";
 import styles from "./ContactApp.module.css";
 
+import emailjs from "@emailjs/browser";
+
 function ContactApp() {
   const [formData, setFormData] = useState({
     name: "",
@@ -12,11 +14,33 @@ function ContactApp() {
     message: "",
   });
 
+  const [justSent, setJustSent] = useState(false);
+
   const handleSubmit = (e) => {
     // Prevent page reload
     e.preventDefault();
-    // alert("Message sent! Name: " + formData.name);
-    setFormData({ name: "", email: "", subject: "", message: "" });
+
+    emailjs
+      .send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        {
+          name: formData.name,
+          email: formData.email,
+          subject: formData.subject,
+          message: formData.message,
+        },
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
+      )
+      .then(() => {
+        setJustSent(true);
+        setTimeout(() => setJustSent(false), 3000); // revert after 3 seconds
+        setFormData({ name: "", email: "", subject: "", message: "" });
+      })
+      .catch((error) => {
+        console.error("Failed to send:", error);
+        alert("Something went wrong. Please try again.");
+      });
   };
 
   const handleChange = (e) => {
@@ -116,7 +140,7 @@ function ContactApp() {
 
           {/* Contact Form */}
           <div className={styles.formBox}>
-            <h2 className={styles.formTitle}>Send a Message</h2>
+            <h2 className={styles.formTitle}>Send Me a Message</h2>
 
             <form onSubmit={handleSubmit} className={styles.form}>
               <div className={styles.formGroup}>
@@ -185,9 +209,18 @@ function ContactApp() {
                 />
               </div>
 
-              <button type="submit" className={styles.submitBtn}>
-                <Send />
-                Send Message
+              <button
+                type="submit"
+                className={styles.submitBtn}
+                disabled={justSent}
+              >
+                {justSent ? (
+                  <>✓ Sent!</>
+                ) : (
+                  <>
+                    <Send /> Send Message
+                  </>
+                )}
               </button>
             </form>
           </div>
