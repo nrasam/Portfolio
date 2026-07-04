@@ -1,7 +1,7 @@
 import styles from "./Taskbar.module.css";
 
 import { useEffect, useState } from "react";
-import { Search, Wifi, Volume2, Battery, Settings } from "lucide-react";
+import { Wifi, Volume2, Battery, Settings } from "lucide-react";
 
 function TaskBar({
   shortcutItems,
@@ -65,7 +65,7 @@ function TaskBar({
                 className={isOpen ? styles.appBtnActive : styles.appBtn}
                 onClick={() => onTaskbarClick(shortcut.id)}
               >
-                <shortcut.icon size={20} className={styles.appIcon} />
+                <shortcut.icon size={16} className={styles.appIcon} />
                 <span className={styles.appLabel}>{shortcut.label}</span>
               </button>
             );

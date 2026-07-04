@@ -1,11 +1,11 @@
 .desktop {
-  /* flex: 1; */
+  /* take all remaining space after taskbar */
+  flex: 1;
+  /* by default flex items have min-height: auto, which can cause overflow even with flex: 1 */
+  min-height: 0;
   background: linear-gradient(135deg, #60a5fa 0%, #a855f7 50%, #ec4899 100%);
   overflow: hidden;
   position: relative;
-
-  height: 100vh;
-  width: 100vw;
 }
 
 .wallpaper {
@@ -124,6 +124,14 @@
 }
 
 [data-theme="xp"] .desktop {
+  /* take all remaining space after taskbar */
+  flex: 1;
+  /* by default flex items have min-height: auto, which can cause overflow even with flex: 1 */
+  min-height: 0;
+  background: linear-gradient(135deg, #60a5fa 0%, #a855f7 50%, #ec4899 100%);
+  overflow: hidden;
+  position: relative;
+
   background: linear-gradient(
     to bottom,
     #5b9bd1 0%,
