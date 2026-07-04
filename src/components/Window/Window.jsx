@@ -37,6 +37,9 @@ function Window({
   const MIN_HEIGHT = 100;
   const MIN_WIDTH = 100;
 
+  const TASKBAR_HEIGHT = 50;
+  const RIBBON_HEIGHT = 30;
+
   const handleMouseDown = (e) => {
     if (isMaximized) {
       return;
@@ -56,9 +59,17 @@ function Window({
       }
 
       if (isDragging.current) {
+        const newX = e.clientX - dragOffset.current.x;
+        const newY = e.clientY - dragOffset.current.y;
+
         setPosition({
-          x: e.clientX - dragOffset.current.x,
-          y: e.clientY - dragOffset.current.y,
+          // Max(0, ...) keeps window's position from being less than 0
+          // Min(newX, maxX) stops the window from going past the screen
+          x: Math.max(0, Math.min(newX, window.innerWidth - size.width)),
+          y: Math.max(
+            0,
+            Math.min(newY, window.innerHeight - TASKBAR_HEIGHT - RIBBON_HEIGHT),
+          ),
         });
       }
 
@@ -101,7 +112,7 @@ function Window({
       document.removeEventListener("mousemove", handleMouseMove);
       document.removeEventListener("mouseup", handleMouseUp);
     };
-  }, [isMaximized]);
+  }, [isMaximized, size]);
 
   const handleMaximizeWindow = () => {
     const currentMaxState = !isMaximized;
