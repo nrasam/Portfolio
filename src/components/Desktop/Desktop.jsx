@@ -56,7 +56,8 @@ function Desktop({
         <div className={styles.welcomeOverlay}>
           <h1 className={styles.welcomeTitle}>Welcome to My Portfolio</h1>
           <p className={styles.welcomeSubtitle}>
-            Explore the desktop to learn more about me!
+            Double-click shortcuts to open them • Drag windows to move them •
+            Resize windows by dragging a corner
           </p>
           <div className={styles.welcomeActions}>
             <button

@@ -2,6 +2,12 @@ import styles from "./Window.module.css";
 import { useEffect, useRef, useState } from "react";
 import { X, Minus, Maximize2, Minimize2 } from "lucide-react";
 
+const MIN_HEIGHT = 200;
+const MIN_WIDTH = 200;
+
+const TASKBAR_HEIGHT = 50;
+const RIBBON_HEIGHT = 30;
+
 function Window({
   title,
   children,
@@ -34,11 +40,8 @@ function Window({
 
   const resizeStartSize = useRef({ width: 0, height: 0 });
 
-  const MIN_HEIGHT = 100;
-  const MIN_WIDTH = 100;
-
-  const TASKBAR_HEIGHT = 50;
-  const RIBBON_HEIGHT = 30;
+  // For cursor visual change logic
+  const [isDraggingVisual, setIsDraggingVisual] = useState(false);
 
   const handleMouseDown = (e) => {
     if (isMaximized) {
@@ -50,6 +53,7 @@ function Window({
       y: e.clientY - position.y,
     };
     isDragging.current = true;
+    setIsDraggingVisual(true); // triggers re-render for cursor
   };
 
   useEffect(() => {
@@ -102,6 +106,7 @@ function Window({
     const handleMouseUp = () => {
       isDragging.current = false;
       isResizing.current = false;
+      setIsDraggingVisual(false);
     };
 
     document.addEventListener("mousemove", handleMouseMove);
@@ -152,7 +157,11 @@ function Window({
       onMouseDown={onFocus}
     >
       {/* Titlebar where you can click & drag the window */}
-      <div className={styles.ribbon} onMouseDown={handleMouseDown}>
+      <div
+        className={styles.ribbon}
+        onMouseDown={handleMouseDown}
+        style={{ cursor: isDraggingVisual ? "grabbing" : "grab" }}
+      >
         {/* Window Title */}
         <div className={styles.titleContainer}>
           <div className={styles.titleIcon}>
