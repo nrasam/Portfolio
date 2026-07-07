@@ -3,12 +3,7 @@ import styles from "./Taskbar.module.css";
 import { useEffect, useState } from "react";
 import { Wifi, Volume2, Battery, Settings } from "lucide-react";
 
-function TaskBar({
-  shortcutItems,
-  openWindows,
-  onTaskbarClick,
-  theme = "default",
-}) {
+function TaskBar({ shortcutItems, openWindows, onTaskbarClick }) {
   const [time, setTime] = useState(new Date());
 
   useEffect(() => {
@@ -31,6 +26,8 @@ function TaskBar({
     year: "numeric",
   });
 
+  const SettingsItem = shortcutItems.find((item) => item.label === "Settings");
+
   return (
     <div className={styles.taskbar}>
       {/* Start Button */}
@@ -42,14 +39,7 @@ function TaskBar({
       </button>
 
       {/* Separator */}
-      <div
-        style={{
-          width: "1px",
-          height: "28px",
-          background: "rgba(255,255,255,0.2)",
-          margin: "0 4px",
-        }}
-      />
+      <div className={styles.separator} />
 
       {/* Taskbar shortcuts */}
       <div className={styles.taskbarShortcuts}>
@@ -76,7 +66,7 @@ function TaskBar({
         <button
           className={styles.settingsBtn}
           title="Settings"
-          onClick={() => onTaskbarClick(7)}
+          onClick={() => onTaskbarClick(SettingsItem.id)}
         >
           <Settings className={styles.trayIcon} size={20} />
         </button>

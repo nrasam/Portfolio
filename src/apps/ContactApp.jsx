@@ -17,7 +17,6 @@ function ContactApp() {
   const [justSent, setJustSent] = useState(false);
 
   const handleSubmit = (e) => {
-    // Prevent page reload
     e.preventDefault();
 
     emailjs
@@ -39,7 +38,6 @@ function ContactApp() {
       })
       .catch((error) => {
         console.error("Failed to send:", error);
-        alert("Something went wrong. Please try again.");
       });
   };
 

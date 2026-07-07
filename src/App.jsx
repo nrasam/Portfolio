@@ -1,61 +1,15 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import Desktop from "./components/Desktop/Desktop";
 import TaskBar from "./components/Taskbar/Taskbar";
 import Window from "./components/Window/Window";
-import AboutApp from "./apps/AboutApp";
-import ContactApp from "./apps/ContactApp";
-import EducationApp from "./apps/EducationApp";
-import ExperienceApp from "./apps/ExperienceApp";
-import ProjectsApp from "./apps/ProjectsApp";
-import SkillsApp from "./apps/SkillsApp";
-import SettingsApp from "./apps/SettingsApp";
-import Game from "./apps/Game";
 import MobileMessage from "./components/MobileMessage/MobileMessage";
 
 import "./App.css";
 import "./themes.css";
 
-import {
-  User,
-  Mail,
-  GraduationCap,
-  Briefcase,
-  BarChart3,
-  Folder,
-  Settings,
-  Gamepad2,
-} from "lucide-react";
+import { themeConfigs } from "./config/themeConfig";
 
-// Theme config
-const themeConfigs = {
-  default: {
-    background:
-      "linear-gradient(135deg, #60a5fa 0%, #a855f7 50%, #ec4899 100%)",
-    wallpaper: null,
-  },
-  fantasy: {
-    background:
-      "linear-gradient(135deg, #60a5fa 0%, #a855f7 50%, #ec4899 100%)",
-    wallpaper:
-      "https://images.unsplash.com/photo-1683660107861-c555be9775b9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmYW50YXN5JTIwY2FzdGxlJTIwbWVkaWV2YWx8ZW58MXx8fHwxNzY4OTMyMTA4fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral", // fantasy castle
-  },
-  cyberpunk: {
-    background:
-      "linear-gradient(135deg, #60a5fa 0%, #a855f7 50%, #ec4899 100%)",
-    wallpaper:
-      "https://images.unsplash.com/photo-1641650265007-b2db704cd9f3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjeWJlcnB1bmslMjBuZW9uJTIwY2l0eXxlbnwxfHx8fDE3Njg5MjgzNDh8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral", // neon city
-  },
-  kittens: {
-    background:
-      "linear-gradient(135deg, #60a5fa 0%, #a855f7 50%, #ec4899 100%)",
-    wallpaper:
-      "https://images.unsplash.com/photo-1570824104453-508955ab713e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjdXRlJTIwa2l0dGVuc3xlbnwxfHx8fDE3Njg5MzIxMDh8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral", // cute kittens
-  },
-  xp: {
-    background: "background-color: #38bdf8;",
-    wallpaper: null,
-  },
-};
+import { createShortcutItems } from "./config/shortcutConfig";
 
 const MOBILE_BREAKPOINT = 768;
 
@@ -68,70 +22,18 @@ function App() {
   );
   const [theme, setTheme] = useState("default");
 
-  const onThemeChange = (theme) => {
-    setTheme(theme);
-  };
+  const shortcutItems = useMemo(
+    () => createShortcutItems({ theme, setTheme }),
+    [theme, setTheme],
+  );
 
-  const shortcutItems = [
-    {
-      id: 1,
-      label: "About Me",
-      emoji: "🧑🏻",
-      icon: User,
-      content: <AboutApp />,
-    },
-    {
-      id: 2,
-      label: "Contact Me",
-      emoji: "📧",
-      icon: Mail,
-      content: <ContactApp />,
-    },
-    {
-      id: 3,
-      label: "Education",
-      emoji: "🎓",
-      icon: GraduationCap,
-      content: <EducationApp />,
-    },
-    {
-      id: 4,
-      label: "Experience",
-      emoji: "💼",
-      icon: Briefcase,
-      content: <ExperienceApp />,
-    },
-    {
-      id: 5,
-      label: "Skills",
-      emoji: "📊",
-      icon: BarChart3,
-      content: <SkillsApp />,
-    },
-    {
-      id: 6,
-      label: "My Projects",
-      emoji: "⚡",
-      icon: Folder,
-      content: <ProjectsApp />,
-    },
-    {
-      id: 7,
-      label: "Settings",
-      emoji: "⚙",
-      icon: Settings,
-      content: (
-        <SettingsApp currentTheme={theme} onThemeChange={onThemeChange} />
+  const handleMinimize = (id) => {
+    setOpenWindows((prev) =>
+      prev.map((window) =>
+        window.id === id ? { ...window, minimized: true } : window,
       ),
-    },
-    {
-      id: 8,
-      label: "Game",
-      emoji: "🎮",
-      icon: Gamepad2,
-      content: <Game />,
-    },
-  ];
+    );
+  };
 
   const handleShortcutClick = (id) => {
     // is the id in the windows array?
@@ -156,11 +58,7 @@ function App() {
         );
       } else {
         // If not minimized, then minimize it
-        setOpenWindows((prev) =>
-          prev.map((window) =>
-            window.id === id ? { ...window, minimized: true } : window,
-          ),
-        );
+        handleMinimize(id);
       }
     } else {
       const newZIndex = highestZIndex + 1;
@@ -176,11 +74,7 @@ function App() {
 
   const handleMinimizeClick = (id) => {
     // set window minimize to true
-    setOpenWindows((prev) =>
-      prev.map((window) =>
-        window.id === id ? { ...window, minimized: true } : window,
-      ),
-    );
+    handleMinimize(id);
   };
 
   const handleCloseClick = (id) => {
@@ -252,7 +146,6 @@ function App() {
         shortcutItems={shortcutItems}
         openWindows={openWindows}
         onTaskbarClick={handleShortcutClick}
-        theme={theme}
       />
     </div>
   );

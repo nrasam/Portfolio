@@ -1,6 +1,5 @@
 import Shortcut from "../Shortcut/Shortcut";
 import styles from "./Desktop.module.css";
-import { useRef } from "react";
 
 function Desktop({
   shortcuts,
@@ -9,10 +8,8 @@ function Desktop({
   themeConfig,
   anyOpenWindows,
 }) {
-  const desktopRef = useRef(null);
-
   return (
-    <div ref={desktopRef} className={styles.desktop}>
+    <div className={styles.desktop}>
       {/* Wallpaper if one exists */}
       {themeConfig.wallpaper && (
         <div
@@ -32,7 +29,6 @@ function Desktop({
           <Shortcut
             key={shortcut.id}
             label={shortcut.label}
-            emoji={shortcut.emoji}
             onClick={() => onShortcutClick(shortcut.id)}
             theme={theme}
             icon={shortcut.icon}
@@ -43,7 +39,6 @@ function Desktop({
       {/* The game corner */}
       <Shortcut
         label={shortcuts[7].label}
-        emoji={shortcuts[7].emoji}
         onClick={() => onShortcutClick(8)}
         theme={theme}
         icon={shortcuts[7].icon}
