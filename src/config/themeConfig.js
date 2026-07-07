@@ -1,3 +1,4 @@
+// Theme presets drive both the background color and the optional wallpaper
 export const themeConfigs = {
   default: {
     background:

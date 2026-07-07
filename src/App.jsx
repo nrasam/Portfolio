@@ -18,15 +18,19 @@ import { ThemeContext } from "./context/ThemeContext";
 const MOBILE_BREAKPOINT = 768;
 
 function App() {
+  // Window state lives in a small hook so App stays focused on layout and composition
   const { openWindows, openWindow, minimizeWindow, closeWindow, focusWindow } =
     useWindowManager();
 
+  // Keep track of whether the viewport should fall back to the mobile message
   const [isMobile, setIsMobile] = useState(
     window.innerWidth < MOBILE_BREAKPOINT,
   );
 
+  // Theme is shared by the desktop, taskbar, and the app windows
   const [theme, setTheme] = useState("default");
 
+  // Rebuild the shortcut list whenever the theme changes so the settings app stays in sync
   const shortcutItems = useMemo(
     () => createShortcutItems({ theme, setTheme }),
     [theme, setTheme],
@@ -37,7 +41,7 @@ function App() {
   const handleCloseClick = (id) => closeWindow(id);
   const handleOnFocus = (id) => focusWindow(id);
 
-  // Listen for resizes
+  // Watch for viewport changes so the mobile fallback can appear when needed
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth < MOBILE_BREAKPOINT);

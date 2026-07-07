@@ -1,10 +1,11 @@
 import { useState } from "react";
 
 export function useWindowManager() {
-  // Represents the open windows; if a window is not open, it will not show up in the array
+  // The hook owns the window stack and the stacking order for the desktop experience
   const [openWindows, setOpenWindows] = useState([]);
   const [highestZIndex, setHighestZIndex] = useState(1);
 
+  // Each new window gets a higher z-index so it appears on top of the others
   const getNextZIndex = () => {
     const nextZIndex = highestZIndex + 1;
     setHighestZIndex(nextZIndex);
@@ -21,7 +22,7 @@ export function useWindowManager() {
   };
 
   const openWindow = (id) => {
-    // is the id in the windows array?
+    // Clicking a shortcut either opens the matching window or toggles it if it is already there
     const isOpen = openWindows.some((window) => window.id === id);
 
     if (isOpen) {
@@ -56,10 +57,12 @@ export function useWindowManager() {
   };
 
   const closeWindow = (id) => {
+    // Remove a window from the list to hide it from the desktop
     setOpenWindows((prev) => prev.filter((item) => item.id != id));
   };
 
   const focusWindow = (id) => {
+    // Bringing a window forward updates its stacking order so it sits above the rest.
     const window = openWindows.find((item) => item.id === id);
 
     // If the window isn't already highest z-index

@@ -2,6 +2,7 @@ import { Code2, Database, Cloud, Wrench } from "lucide-react";
 import styles from "./SkillsApp.module.css";
 import { useEffect, useState } from "react";
 
+// The skills are grouped by area so each section can render its own visual style and list
 const skillCategories = [
   {
     id: 1,
@@ -60,6 +61,7 @@ const skillCategories = [
   },
 ];
 
+// Color choices are centralized so the cards stay visually consistent across categories
 const colorMap = {
   blue: {
     iconBg: "#3b82f6",
@@ -95,8 +97,7 @@ function SkillsApp() {
   const [animated, setAnimated] = useState(false);
 
   useEffect(() => {
-    // after a tiny delay set animated to true so the bar fill animates from 0 to its actual value
-    // a tiny delay guarantees the browser sees 0 first, then sees the change to the real width
+    // Start with the bars at zero and let them animate in once the component is mounted
     const timer = setTimeout(() => setAnimated(true), 50);
     return () => clearTimeout(timer);
   }, []);
@@ -113,6 +114,7 @@ function SkillsApp() {
         </div>
 
         <div className={styles.grid}>
+          {/* Each category renders its own card with a matching color palette and skill list */}
           {skillCategories.map((category) => {
             const colors = colorMap[category.color];
             return (
@@ -164,7 +166,7 @@ function SkillsApp() {
           })}
         </div>
 
-        {/* Additional Skills */}
+        {/* These tags capture the extra strengths that do not fit neatly into a single proficiency bar */}
         <div className={styles.additionalSection}>
           <h3 className={styles.additionalTitle}>Additional Competencies</h3>
           <div className={styles.tagList}>

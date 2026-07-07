@@ -7,6 +7,7 @@ import styles from "./ContactApp.module.css";
 import emailjs from "@emailjs/browser";
 
 function ContactApp() {
+  // Keeps the form fields in one place so the inputs can update together
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -14,11 +15,13 @@ function ContactApp() {
     message: "",
   });
 
+  // Used to briefly swap the button state after a successful send
   const [justSent, setJustSent] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    // Send the message through EmailJS using the env values configured for the app
     emailjs
       .send(
         import.meta.env.VITE_EMAILJS_SERVICE_ID,
@@ -42,6 +45,7 @@ function ContactApp() {
   };
 
   const handleChange = (e) => {
+    // Update the matching field while preserving the rest of the form data
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
@@ -59,7 +63,7 @@ function ContactApp() {
         </div>
 
         <div className={styles.grid}>
-          {/* Contact Info */}
+          {/* Contact details and social links live in this column */}
           <div>
             <div className={styles.contactInfoBox}>
               <h2 className={styles.infoTitle}>Contact Info</h2>
@@ -136,7 +140,7 @@ function ContactApp() {
             </div>
           </div>
 
-          {/* Contact Form */}
+          {/* The form is rendered in the second column so it sits beside the contact info */}
           <div className={styles.formBox}>
             <h2 className={styles.formTitle}>Send Me a Message</h2>
 

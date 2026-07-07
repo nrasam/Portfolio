@@ -23,7 +23,7 @@ function Window({
 }) {
   const { theme } = useTheme();
 
-  // Cascades newly opened windows
+  // New windows start slightly offset so the desktop feels a little more natural.
   // Using () => () stops the calculation from re-running pointlessly
   const [position, setPosition] = useState(() => ({
     x: 100 + (openOrder % 4) * 40 + Math.floor(Math.random() * 30) - 15,
@@ -32,21 +32,26 @@ function Window({
 
   const [size, setSize] = useState({ height: 650, width: 750 });
 
+  // Tracks whether the window is currently being moved
   const isDragging = useRef(false);
   const dragOffset = useRef({ x: 0, y: 0 });
+
   const [isMaximized, setIsMaximized] = useState(false);
 
+  // Keeps the last normal size and position so maximize can be toggled back
   const prevSizeAndPosition = useRef({});
 
+  // Tracks whether the window is being resized from the corner
   const isResizing = useRef(false);
   const resizeOffset = useRef({ x: 0, y: 0 });
 
   const resizeStartSize = useRef({ width: 0, height: 0 });
 
-  // For cursor visual change logic
+  // Used to switch the cursor while the window is being dragged
   const [isDraggingVisual, setIsDraggingVisual] = useState(false);
 
   const handleMouseDown = (e) => {
+    // Start dragging from the title bar when the window is not maximized
     if (isMaximized) {
       return;
     }
@@ -123,6 +128,7 @@ function Window({
   }, [isMaximized, size]);
 
   const handleMaximizeWindow = () => {
+    // Toggle between full-screen and the previous size and position
     const currentMaxState = !isMaximized;
     setIsMaximized(!isMaximized);
 
@@ -140,6 +146,7 @@ function Window({
   };
 
   const handleResizeMouseDown = (e) => {
+    // Start resizing from the corner handle
     isResizing.current = true;
     resizeOffset.current = { x: e.clientX, y: e.clientY };
     resizeStartSize.current = { width: size.width, height: size.height };

@@ -20,6 +20,7 @@ import SettingsApp from "../apps/SettingsApp";
 import Game from "../apps/Game";
 
 export function createShortcutItems() {
+  // These are the desktop shortcuts and the panel each one opens.
   return [
     {
       id: 1,
