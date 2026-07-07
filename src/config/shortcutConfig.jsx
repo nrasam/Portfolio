@@ -19,7 +19,7 @@ import SkillsApp from "../apps/SkillsApp";
 import SettingsApp from "../apps/SettingsApp";
 import Game from "../apps/Game";
 
-export function createShortcutItems({ theme, setTheme }) {
+export function createShortcutItems() {
   return [
     {
       id: 1,
@@ -61,7 +61,7 @@ export function createShortcutItems({ theme, setTheme }) {
       id: 7,
       label: "Settings",
       icon: Settings,
-      content: <SettingsApp currentTheme={theme} onThemeChange={setTheme} />,
+      content: <SettingsApp />,
     },
     { id: 8, label: "Game", icon: Gamepad2, content: <Game /> },
   ];

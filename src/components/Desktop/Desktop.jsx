@@ -1,13 +1,7 @@
 import Shortcut from "../Shortcut/Shortcut";
 import styles from "./Desktop.module.css";
 
-function Desktop({
-  shortcuts,
-  onShortcutClick,
-  theme,
-  themeConfig,
-  anyOpenWindows,
-}) {
+function Desktop({ shortcuts, onShortcutClick, themeConfig, anyOpenWindows }) {
   return (
     <div className={styles.desktop}>
       {/* Wallpaper if one exists */}
@@ -30,7 +24,6 @@ function Desktop({
             key={shortcut.id}
             label={shortcut.label}
             onClick={() => onShortcutClick(shortcut.id)}
-            theme={theme}
             icon={shortcut.icon}
           />
         ))}
@@ -40,7 +33,6 @@ function Desktop({
       <Shortcut
         label={shortcuts[7].label}
         onClick={() => onShortcutClick(8)}
-        theme={theme}
         icon={shortcuts[7].icon}
         badgeClass={"gameBadge"}
         gameCorner={true}

@@ -3,7 +3,12 @@
   flex: 1;
   /* by default flex items have min-height: auto, which can cause overflow even with flex: 1 */
   min-height: 0;
-  background: linear-gradient(135deg, #60a5fa 0%, #a855f7 50%, #ec4899 100%);
+  background: linear-gradient(
+    to bottom right,
+    var(--desktop-bg-grad-start) 0%,
+    var(--desktop-bg-grad-mid) 50%,
+    var(--desktop-bg-grad-end) 100%
+  );
   overflow: hidden;
   position: relative;
 }

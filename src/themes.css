@@ -1,4 +1,8 @@
 [data-theme="default"] {
+  --desktop-bg-grad-start: #60a5fa;
+  --desktop-bg-grad-mid: #a855f7;
+  --desktop-bg-grad-end: #ec4899;
+
   --window-bg: white;
   --window-border-color: grey;
   --text-color: white;
@@ -105,6 +109,22 @@
 }
 
 [data-theme="cyberpunk"] {
+  --desktop-bg-grad-start: #0f172a;
+  --desktop-bg-grad-mid: #581c87;
+  --desktop-bg-grad-end: #0f172a;
+
   --ribbon-gradient-start: #ff00ff;
   --window-bg: #0a0a12;
+}
+
+[data-theme="kittens"] {
+  --desktop-bg-grad-start: #fbcfe8;
+  --desktop-bg-grad-mid: #fecdd3;
+  --desktop-bg-grad-end: #fed7aa;
+}
+
+[data-theme="fantasy"] {
+  --desktop-bg-grad-start: #064e3b;
+  --desktop-bg-grad-mid: #0f766e;
+  --desktop-bg-grad-end: #16a34a;
 }

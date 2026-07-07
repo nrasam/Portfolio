@@ -2,6 +2,8 @@ import styles from "./Window.module.css";
 import { useEffect, useRef, useState } from "react";
 import { X, Minus, Maximize2, Minimize2 } from "lucide-react";
 
+import { useTheme } from "../../context/ThemeContext";
+
 const MIN_HEIGHT = 200;
 const MIN_WIDTH = 200;
 
@@ -16,15 +18,16 @@ function Window({
   zIndex,
   onFocus,
   isMinimized,
-  theme,
   icon: Icon,
   openOrder,
 }) {
+  const { theme } = useTheme();
+
   // Cascades newly opened windows
   // Using () => () stops the calculation from re-running pointlessly
   const [position, setPosition] = useState(() => ({
-    x: 100 + (openOrder % 5) * 40 + Math.floor(Math.random() * 30) - 15,
-    y: 100 + (openOrder % 5) * 40 + Math.floor(Math.random() * 30) - 15,
+    x: 100 + (openOrder % 4) * 40 + Math.floor(Math.random() * 30) - 15,
+    y: 100 + (openOrder % 4) * 40 + Math.floor(Math.random() * 30) - 15,
   }));
 
   const [size, setSize] = useState({ height: 650, width: 750 });

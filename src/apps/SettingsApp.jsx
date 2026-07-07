@@ -1,6 +1,8 @@
 import { Palette, Check } from "lucide-react";
 import styles from "./SettingsApp.module.css";
 
+import { useTheme } from "../context/ThemeContext";
+
 const themes = [
   {
     id: "default",
@@ -55,7 +57,9 @@ const themes = [
   },
 ];
 
-function SettingsApp({ currentTheme, onThemeChange }) {
+function SettingsApp() {
+  const { theme: currentTheme, setTheme: onThemeChange } = useTheme();
+
   return (
     <div className={styles.container}>
       <div className={styles.inner}>
