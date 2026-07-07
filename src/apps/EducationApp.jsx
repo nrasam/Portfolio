@@ -8,10 +8,11 @@ const education = [
     school: "York University",
     period: "2025 to Present",
     gpa: "9.0/9.0",
-    description: "Learning logic, probability, OOP, and computational theory.",
+    description:
+      "At York University, I’m building a strong academic foundation in computer science while staying actively involved in the programming community as a founding member and secretary of a student club. I’m also maintaining a perfect GPA and continuing to grow through coursework and hands-on technical projects.",
     achievements: [
       "President’s Honour Roll all semesters",
-      "Helped start a coding club [Codexperts]; Acting secretary",
+      "Founding member of the CodeXperts programming club | Acting secretary",
     ],
   },
   {
@@ -20,11 +21,13 @@ const education = [
     school: "Seneca Polytechnic",
     period: "2019 - 2020",
     gpa: "4.0/4.0",
-    description: "...",
+    description:
+      "Developed strong technical and communication skills through software development studies and tutoring at Seneca Polytechnic.",
     achievements: [
-      "Colloborated in a capstone to create a chatroom wesbite where users could watch YouTube together.",
-      "Became a programming tutor for Seneca's learning centre",
-      "Graduated with Honors",
+      "Supported 1st- and 2nd-year students with C, C++, and UNIX tutoring",
+      "Helped students understand difficult concepts and debug code",
+      "Graduated with High Honours",
+      "Colloborated on a capstone project to create a website where users could watch YouTube videos together in chatrooms",
     ],
   },
 ];
@@ -32,24 +35,16 @@ const education = [
 const certifications = [
   {
     id: 1,
-    name: "Appian Associate Developer",
+    name: "Certified Associate Appian Developer",
     issuer: "Appian",
-    date: "March 2023",
-    credentialId: "AWS-SA-2023-12345",
+    date: "Dec 2024",
   },
   {
     id: 2,
-    name: "Microsoft Cloud",
+    name: "Azure Fundamentals",
     issuer: "Microsoft",
-    date: "August 2022",
-    credentialId: "GCP-PD-2022-67890",
-  },
-  {
-    id: 3,
-    name: "Cert 3",
-    issuer: "CNCF",
-    date: "January 2022",
-    credentialId: "CKA-2022-54321",
+    date: "Jan 2023",
+    credentialId: "994548802",
   },
 ];
 
@@ -120,7 +115,7 @@ function EducationApp() {
                     <p className={styles.certIssuer}>{cert.issuer}</p>
                     <div className={styles.certMeta}>
                       <div>Issued: {cert.date}</div>
-                      <div>ID: {cert.credentialId}</div>
+                      {cert.credentialId && <div>ID: {cert.credentialId}</div>}
                     </div>
                   </div>
                 </div>

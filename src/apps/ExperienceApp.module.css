@@ -67,6 +67,7 @@
 
 .cardMeta {
   text-align: right;
+  flex-shrink: 0;
 }
 
 .periodRow {
@@ -109,7 +110,6 @@
 
 .bullet {
   color: #2563eb;
-  margin-top: 0.25rem;
 }
 
 .techTags {

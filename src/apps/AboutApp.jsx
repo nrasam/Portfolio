@@ -13,7 +13,7 @@ function AboutApp() {
           <div className={styles.profileInfo}>
             <h1 className={styles.name}>Noël Rasam</h1>
             <p className={styles.title}>
-              Computer Science Student & future mad scientist
+              Software Developer & Computer Science Student
             </p>
             <div className={styles.metaRow}>
               <div className={styles.metaItem}>
@@ -61,14 +61,19 @@ function AboutApp() {
         <div className={styles.aboutSection}>
           <h2 className={styles.sectionTitle}>About Me</h2>
           <p className={styles.aboutText}>
-            Detail-oriented and versatile software developer with two years of
-            industry experience and a solid foundation in software development,
-            built over years of academic study.
+            Software Developer with hands-on experience in enterprise software
+            development, including Appian platform solutions, Java API services,
+            and CI/CD modernization. Known for collaborating effectively in
+            agile teams, solving technical problems, and contributing to
+            reliable, user-focused systems.
           </p>
           <p className={styles.aboutText}>
-            Strong communicator and effective team player, with excellent
-            teaching skills honed through tutoring and collaborative project
-            work.
+            Currently completing my degree while maintaining strong academic
+            performance, with an active focus on building personal software
+            projects and expanding my experience in modern web development. I am
+            especially interested in React-based development, where I continue
+            to strengthen my skills by creating practical, hands-on projects
+            that sharpen my problem-solving and product-building abilities.
           </p>
         </div>
 
@@ -80,7 +85,7 @@ function AboutApp() {
           </div>
           <div className={styles.statCardPurple}>
             <div className={styles.statNumberPurple}>12</div>
-            <div className={styles.statLabel}>Technologies</div>
+            <div className={styles.statLabel}>Technologies Known</div>
           </div>
           <div className={styles.statCardGreen}>
             <div className={styles.statNumberGreen}>9.0/9.0</div>

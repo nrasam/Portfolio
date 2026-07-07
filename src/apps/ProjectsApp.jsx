@@ -15,13 +15,14 @@ const projects = [
     id: 1,
     name: "Desktop Portfolio OS",
     description:
-      "This very site! A React-based portfolio styled as a desktop OS with draggable, resizable windows.",
+      "This very site! A polished, desktop-inspired portfolio website in React and Vite that recreates the feel of a personal operating system through draggable windows, taskbar interactions, and desktop themes. The project combines custom React hooks and context-based state management with a responsive design, demonstrating strong frontend engineering and UI/UX craftsmanship.",
     image: portfolioImg,
     technologies: ["React", "JavaScript", "HTML", "CSS"],
     highlights: [
-      "Features draggable, resizeable, minimizeable, and maximizeable windows",
-      "Features draggable, resizeable, minimizeable, and maximizeable windows",
-      "Features draggable, resizeable, minimizeable, and maximizeable windows",
+      "Designed and implemented a custom window system with open, minimize, close, focus, and drag/resize interactions",
+      "Built a reusable theming experience with multiple desktop themes, wallpaper support, and dynamic UI updates",
+      "Created a modular, component-based architecture using React, CSS Modules, and reusable desktop interface elements",
+      "Integrated EmailJS for a working contact form and added a special feature for mobile users",
     ],
     github: "https://github.com/nrasam/Portfolio",
     demo: null,

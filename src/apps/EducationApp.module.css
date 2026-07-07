@@ -64,6 +64,7 @@
 
 .cardMeta {
   text-align: right;
+  flex-shrink: 0;
 }
 
 .period {

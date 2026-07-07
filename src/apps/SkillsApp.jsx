@@ -1,4 +1,4 @@
-import { Code2, Database, Cloud, Wrench } from "lucide-react";
+import { Code2, Database, Cloud, Brain } from "lucide-react";
 import styles from "./SkillsApp.module.css";
 import { useEffect, useState } from "react";
 
@@ -6,57 +6,54 @@ import { useEffect, useState } from "react";
 const skillCategories = [
   {
     id: 1,
-    category: "Frontend Development",
+    category: "Languages",
     icon: <Code2 size={20} />,
     color: "blue",
     skills: [
-      { name: "React", level: 95 },
-      { name: "TypeScript", level: 90 },
-      { name: "Vue.js", level: 85 },
-      { name: "HTML/CSS", level: 95 },
-      { name: "Tailwind CSS", level: 90 },
-      { name: "Next.js", level: 85 },
+      { name: "JavaScript", level: 85 },
+      { name: "Java", level: 80 },
+      { name: "SQL", level: 80 },
+      { name: "C/C++", level: 70 },
+      { name: "TypeScript", level: 65 },
     ],
   },
   {
     id: 2,
-    category: "Backend Development",
+    category: "Web & Frameworks",
     icon: <Database size={20} />,
     color: "green",
     skills: [
-      { name: "Node.js", level: 90 },
-      { name: "Python", level: 80 },
-      { name: "PostgreSQL", level: 85 },
-      { name: "MongoDB", level: 85 },
-      { name: "GraphQL", level: 80 },
-      { name: "REST APIs", level: 95 },
+      { name: "HTML", level: 90 },
+      { name: "React", level: 75 },
+      { name: "CSS", level: 70 },
+      { name: "Vite", level: 65 },
+      { name: "Angular", level: 55 },
     ],
   },
   {
     id: 3,
-    category: "Cloud & DevOps",
+    category: "Tools & DevOps",
     icon: <Cloud size={20} />,
     color: "purple",
     skills: [
-      { name: "AWS", level: 85 },
-      { name: "Docker", level: 90 },
-      { name: "Kubernetes", level: 75 },
-      { name: "CI/CD", level: 85 },
-      { name: "Terraform", level: 70 },
-      { name: "Linux", level: 80 },
+      { name: "Appian", level: 95 },
+      { name: "Relational Databases", level: 85 },
+      { name: "Git", level: 70 },
+      { name: "UNIX/Linux", level: 70 },
+      { name: "GitLab CI/CD", level: 60 },
     ],
   },
   {
     id: 4,
-    category: "Tools & Other",
-    icon: <Wrench size={20} />,
+    category: "Computer Science Subjects",
+    icon: <Brain size={20} />,
     color: "orange",
     skills: [
-      { name: "Git", level: 95 },
-      { name: "Jest/Testing", level: 85 },
-      { name: "Webpack/Vite", level: 80 },
-      { name: "Agile/Scrum", level: 90 },
-      { name: "Jira", level: 85 },
+      { name: "Object Oriented Programming", level: 95 },
+      { name: "Discrete Mathematics", level: 90 },
+      { name: "Calculus", level: 90 },
+      { name: "Probability", level: 85 },
+      { name: "Logic", level: 80 },
     ],
   },
 ];
@@ -168,16 +165,20 @@ function SkillsApp() {
 
         {/* These tags capture the extra strengths that do not fit neatly into a single proficiency bar */}
         <div className={styles.additionalSection}>
-          <h3 className={styles.additionalTitle}>Additional Competencies</h3>
+          <h3 className={styles.additionalTitle}>
+            Additional Competencies & Soft Skills
+          </h3>
           <div className={styles.tagList}>
             {[
-              "Problem Solving",
               "Code Review",
               "Technical Writing",
-              "System Design",
-              "Performance Optimization",
-              "API Design",
               "Dubugging",
+              "Problem Solving",
+              "Tutoring/Teaching",
+              "Communication",
+              "Agile/Scrum",
+              "Notion",
+              "Time Management",
             ].map((skill, idx) => (
               <span key={idx} className={styles.tag}>
                 {skill}
