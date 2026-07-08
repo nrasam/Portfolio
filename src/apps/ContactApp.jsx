@@ -18,8 +18,16 @@ function ContactApp() {
   // Used to briefly swap the button state after a successful send
   const [justSent, setJustSent] = useState(false);
 
+  const [lastSent, setLastSent] = useState(null);
+
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    // Stops anyone from spamming me
+    if (lastSent && Date.now() - lastSent < 60000) {
+      alert("Please wait a minute before sending another message.");
+      return;
+    }
 
     // Send the message through EmailJS using the env values configured for the app
     emailjs
@@ -35,6 +43,7 @@ function ContactApp() {
         import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
       )
       .then(() => {
+        setLastSent(Date.now());
         setJustSent(true);
         setTimeout(() => setJustSent(false), 3000); // revert after 3 seconds
         setFormData({ name: "", email: "", subject: "", message: "" });
