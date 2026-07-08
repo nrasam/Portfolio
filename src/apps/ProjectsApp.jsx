@@ -108,8 +108,8 @@ const projects = [
       "Implemented perspective-based scaling for enemy movement — aliens grow larger as they approach the player by continuously decreasing their scale divisor each frame",
       "Ammo and reload animation system — firing expends ammo in bursts of 3 (mimicking a battle rifle), and reloading triggers a frame-counted animation that slides the player sprite off-screen and back, with ammo restored only after the full animation completes",
     ],
-    github: "https://github.com/nrasam/vocab-builder",
-    demo: null,
+    github: null,
+    demo: "https://editor.p5js.org/nrasam/full/Owxmtn8ww",
     featured: false,
   },
 ];
