@@ -10,11 +10,11 @@ const skillCategories = [
     icon: <Code2 size={20} />,
     color: "blue",
     skills: [
-      { name: "JavaScript", level: 85 },
-      { name: "Java", level: 80 },
-      { name: "SQL", level: 80 },
-      { name: "C/C++", level: 70 },
-      { name: "TypeScript", level: 65 },
+      { name: "JavaScript", level: 80 },
+      { name: "Java", level: 75 },
+      { name: "SQL", level: 70 },
+      { name: "C/C++", level: 65 },
+      { name: "TypeScript", level: 60 },
     ],
   },
   {
@@ -23,11 +23,11 @@ const skillCategories = [
     icon: <Database size={20} />,
     color: "green",
     skills: [
-      { name: "HTML", level: 90 },
-      { name: "React", level: 75 },
-      { name: "CSS", level: 70 },
-      { name: "Vite", level: 65 },
-      { name: "Angular", level: 55 },
+      { name: "HTML", level: 85 },
+      { name: "React", level: 70 },
+      { name: "CSS", level: 65 },
+      { name: "Vite", level: 50 },
+      { name: "Angular", level: 25 },
     ],
   },
   {
@@ -37,10 +37,10 @@ const skillCategories = [
     color: "purple",
     skills: [
       { name: "Appian", level: 95 },
-      { name: "Relational Databases", level: 85 },
+      { name: "Relational Databases", level: 80 },
       { name: "Git", level: 70 },
-      { name: "UNIX/Linux", level: 70 },
-      { name: "GitLab CI/CD", level: 60 },
+      { name: "UNIX/Linux", level: 65 },
+      { name: "GitLab CI/CD", level: 50 },
     ],
   },
   {
@@ -49,11 +49,11 @@ const skillCategories = [
     icon: <Brain size={20} />,
     color: "orange",
     skills: [
-      { name: "Object Oriented Programming", level: 95 },
+      { name: "OOP", level: 95 },
       { name: "Discrete Mathematics", level: 90 },
       { name: "Calculus", level: 90 },
       { name: "Probability", level: 85 },
-      { name: "Logic", level: 80 },
+      { name: "Logic", level: 79 },
     ],
   },
 ];
@@ -90,6 +90,21 @@ const colorMap = {
   },
 };
 
+// function getSkillEmoji(score) {
+//   if (score <= 25) return "🌱";
+//   if (score <= 50) return "🌾";
+//   if (score <= 75) return "🌲";
+//   return "🚀";
+// }
+
+// function getLetterGrade(score) {
+//   if (score <= 60) return "- ";
+//   if (score <= 75) return "B ";
+//   if (score <= 79) return "B+ ";
+//   if (score <= 89) return "A ";
+//   return "A+ ";
+// }
+
 function SkillsApp() {
   const [animated, setAnimated] = useState(false);
 
@@ -104,10 +119,10 @@ function SkillsApp() {
       <div className={styles.inner}>
         <div className={styles.pageHeader}>
           <h1 className={styles.pageTitle}>Skills & Technologies</h1>
-          <p className={styles.pageSubtitle}>
-            Proficiency levels slowly accurred through school, work, and
-            personal projects
-          </p>
+          {/* <p className={styles.pageSubtitle}>
+            0-25% Still learning | 26-50% Use often | 51-75% Advanced | 76-100%
+            Mastered
+          </p> */}
         </div>
 
         <div className={styles.grid}>
@@ -142,6 +157,9 @@ function SkillsApp() {
                           className={styles.skillLevel}
                           style={{ color: colors.textColor }}
                         >
+                          {/* {category.category === "Computer Science Subjects"
+                            ? getLetterGrade(skill.level)
+                            : getSkillEmoji(skill.level)} */}
                           {skill.level}%
                         </span>
                       </div>

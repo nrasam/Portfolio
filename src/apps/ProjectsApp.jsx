@@ -6,7 +6,7 @@ import { FaStar } from "react-icons/fa";
 
 import portfolioImg from "../assets/portfolio_os.jpg";
 import geoQuizImg from "../assets/geo_quiz.jpg";
-import foodMattersImg from "../assets/food_matters.jpg";
+import haloShooterImg from "../assets/halo_shooter.jpg";
 import makeGainsImg from "../assets/make_gains.jpg";
 import { useState } from "react";
 
@@ -31,13 +31,14 @@ const projects = [
   {
     id: 2,
     name: "Geography Quiz",
-    description: "Final Project for Intro to Computing at York University.",
+    description:
+      "A landmark-based geography quiz built with vanilla JavaScript for my Intro to Computing final project at York University. Given a photo of a world landmark, players identify the correct continent, country, and city across multiple choice questions.",
     image: geoQuizImg,
     technologies: ["JavaScript", "HTML", "CSS"],
     highlights: [
-      "Quizzes you on your geography knowledge",
-      "Quizzes you on your geography knowledge",
-      "Quizzes you on your geography knowledge",
+      "Wrote unit tests using Vitest — the utility functions all have dedicated test coverage, demonstrating awareness of software testing practices",
+      "Implemented a Fisher-Yates shuffle algorithm from scratch to randomize both question order and multiple choice options — ensuring no two playthroughs are identical and correct answers never appear in a predictable position",
+      "Cleanly separated concerns — game logic (utils.js), data (landmarks.js), and presentation (index.html) live in separate files, despite no framework to enforce it",
     ],
     github: "https://github.com/nrasam/GeographyQuiz",
     demo: "https://nrasam.github.io/GeographyQuiz/",
@@ -45,16 +46,16 @@ const projects = [
   },
   {
     id: 3,
-    name: "Workout Routine Builder Notion Template",
+    name: "Workout Routine Notion Template",
     description:
-      "A weekly workout routine builder with an accompanying database of 100's of exercises.",
+      "A notion template for constructing a weekly exercise routine where users can select from a database of nearly 200 exercises organized by muscle groups, covering multiple modalities, and accompanying visual instructions.",
     image:
       "https://s3.us-west-2.amazonaws.com/public.notion-static.com/template/b447381e-8431-4602-bded-14d952a31cd5/1729866061631/desktop.jpg",
     technologies: ["Notion"],
     highlights: [
+      "Each exercise added to your routine includes its own table for tracking progressive overload",
       "👁 3,000 product views and 1,000 downloads",
       "⭐ 4.5 rating",
-      "An exercise encyclopedia covering nearly 200 exercises organized by muscle groups, ranging from weighted exercises to machines to bands, as well as visual instructions.",
     ],
     github: null,
     demo: "https://www.notion.com/templates/weekly-workout-schedule-builder-with-accompanying-exercise-d?clientBuildTarget=client",
@@ -62,30 +63,33 @@ const projects = [
   },
   {
     id: 4,
-    name: "Food Matters",
+    name: "Vocab Builder",
     description:
-      "This app is a proof of concept where you add and remove food from a list. Each food item has a weight and expiration date property.",
-    image: foodMattersImg,
-    technologies: ["Android Studio", "Java"],
+      "A mobile vocabulary builder app built with Angular and Ionic that uses spaced repetition to help users retain new words.",
+    image:
+      "https://user-images.githubusercontent.com/66037599/167320456-a01674a9-0b6f-4a38-a7df-840094b1559a.png",
+    technologies: ["Angular", "Ionic", "TypeScript"],
     highlights: [
-      "You can add and remove food from a virtual pantry",
-      "You can add and remove food from a virtual pantry",
-      "You can add and remove food from a virtual pantry",
+      "Fetches real definitions from a public dictionary API and schedules words for review based on how well the user knows them",
+      "Implemented a spaced repetition system from scratch — the review scheduler assigns different time intervals to words based on self-reported recall confidence (forgotten, partial, with effort, immediate), mirroring the core mechanic behind tools like Anki and Duolingo",
+      "Integrated a live dictionary REST API — used Angular's HttpClient with RxJS Observable streams to fetch word definitions, phonetics, and meanings dynamically from dictionaryapi.dev, handling async data throughout the app reactively",
     ],
-    github: "https://github.com/nrasam/Food_Matters",
+    github: "https://github.com/nrasam/vocab-builder",
     demo: null,
     featured: false,
   },
   {
     id: 5,
-    name: "Make Gains",
-    description: "A calorie tracker in the form of a human nutritional facts.",
+    name: "Calorie & Nutrient Tracker",
+    description:
+      "A calorie and nutrient tracker built with Angular and Angular Material, styled after a nutritional facts label.",
     image: makeGainsImg,
     technologies: ["Angular", "TypeScript"],
     highlights: [
-      "Add food items from a list",
-      "Add food items from a list",
-      "Add food items from a list",
+      "Tracks 24 distinct macro and micronutrients simultaneously — the nutrient aggregation system maps food additions to a shared nutrient table in real time, correctly handling partial servings and multi-nutrient foods",
+      "Searchable food list with live filtering — the food table filters results on every keystroke using a case-insensitive substring match, restoring the full list when the search is cleared",
+      "Angular Material data tables — used mat-table with defined column schemas (displayedColumns) for both the food list and the nutrient summary, demonstrating comfort with a professional UI component library",
+      "Service-based architecture with clear separation — FoodService handles food data, NutrientService owns all aggregation logic and calorie tracking",
     ],
     github: "https://github.com/nrasam/make-gains",
     demo: "https://nrasam.github.io/make-gains/make-gains/",
@@ -93,15 +97,16 @@ const projects = [
   },
   {
     id: 6,
-    name: "Vocab Builder",
-    description: "A vocabulary builder app that uses active recall.",
-    image:
-      "https://user-images.githubusercontent.com/66037599/167320456-a01674a9-0b6f-4a38-a7df-840094b1559a.png",
-    technologies: ["Ionic", "TypeScript"],
+    name: "2D Shooter",
+    description:
+      "A browser-based 2D shooter built with p5.js where you defend against waves of aliens advancing toward you.",
+    image: haloShooterImg,
+    technologies: ["p5.js", "JavaScript"],
     highlights: [
-      "Uses active recall",
-      "Uses active recall",
-      "Uses active recall",
+      "Features three alien variants, progressive difficulty scaling across rounds, a health regeneration system, and a full ammo/reload mechanic — all built from scratch in vanilla JavaScript with no game engine",
+      "Designed an OOP architecture using constructor functions — Player, Alien, and SpawnPoint are each modeled as self-contained objects with their own state and methods",
+      "Implemented perspective-based scaling for enemy movement — aliens grow larger as they approach the player by continuously decreasing their scale divisor each frame",
+      "Ammo and reload animation system — firing expends ammo in bursts of 3 (mimicking a battle rifle), and reloading triggers a frame-counted animation that slides the player sprite off-screen and back, with ammo restored only after the full animation completes",
     ],
     github: "https://github.com/nrasam/vocab-builder",
     demo: null,

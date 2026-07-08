@@ -80,7 +80,7 @@ function AboutApp() {
         {/* Quick Stats */}
         <div className={styles.statsGrid}>
           <div className={styles.statCardBlue}>
-            <div className={styles.statNumberBlue}>7+</div>
+            <div className={styles.statNumberBlue}>6+</div>
             <div className={styles.statLabel}>Projects Completed</div>
           </div>
           <div className={styles.statCardPurple}>
