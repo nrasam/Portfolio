@@ -7,17 +7,43 @@ import { FaStar } from "react-icons/fa";
 import portfolioImg from "../assets/portfolio_os.jpg";
 import geoQuizImg from "../assets/geo_quiz.jpg";
 import haloShooterImg from "../assets/halo_shooter.jpg";
-import makeGainsImg from "../assets/make_gains.jpg";
+import nutritionTrackerImg from "../assets/nutrition-tracker.jpg";
 import { useState } from "react";
 
 const projects = [
   {
     id: 1,
+    name: "Nutrition Tracker",
+    description:
+      "Full-stack macro/micronutrient tracking app with a normalized relational schema, transactional REST API, and responsive React frontend — deployed live with role-based write access control.",
+    image: nutritionTrackerImg,
+    technologies: [
+      "React",
+      "TypeScript",
+      "Express",
+      "PostgreSQL",
+      "Prisma",
+      "Vite",
+      "Node.js",
+      "CSS",
+    ],
+    highlights: [
+      "Data modeling at scale — Designed a normalized many-to-many schema (foods, micronutrients, entries) using join tables, enums, and cascading relations",
+      "Data integrity under failure — Used Prisma transactions for multi-step writes so a failed request can't leave the database half-updated, and snapshotted nutrition values at write-time so historical records stay accurate even after source data changes",
+      "Security-conscious API design — Implemented middleware-based access control (open reads, password-gated writes) and origin-locked CORS",
+      "End-to-end ownership and deployment — Took the project from schema design through a live, publicly deployed production app (separate frontend/backend hosts, environment-based config)",
+    ],
+    github: "https://github.com/nrasam/nutrition-tracker",
+    demo: "https://noelsnutritiontracker.netlify.app",
+    featured: true,
+  },
+  {
+    id: 2,
     name: "Desktop Portfolio OS",
     description:
       "This very site! A polished, desktop-inspired portfolio website in React and Vite that recreates the feel of a personal operating system through draggable windows, taskbar interactions, and desktop themes. The project combines custom React hooks and context-based state management with a responsive design, demonstrating strong frontend engineering and UI/UX craftsmanship.",
     image: portfolioImg,
-    technologies: ["React", "JavaScript", "HTML", "CSS"],
+    technologies: ["React", "JavaScript", "HTML", "CSS", "Vite"],
     highlights: [
       "Designed and implemented a custom window system with open, minimize, close, focus, and drag/resize interactions",
       "Built a reusable theming experience with multiple desktop themes, wallpaper support, and dynamic UI updates",
@@ -29,7 +55,7 @@ const projects = [
     featured: true,
   },
   {
-    id: 2,
+    id: 3,
     name: "Geography Quiz",
     description:
       "A landmark-based geography quiz built with vanilla JavaScript for my Intro to Computing final project at York University. Given a photo of a world landmark, players identify the correct continent, country, and city across multiple choice questions.",
@@ -42,10 +68,10 @@ const projects = [
     ],
     github: "https://github.com/nrasam/GeographyQuiz",
     demo: "https://nrasam.github.io/GeographyQuiz/",
-    featured: true,
+    featured: false,
   },
   {
-    id: 3,
+    id: 4,
     name: "Workout Routine Notion Template",
     description:
       "A notion template for constructing a weekly exercise routine where users can select from a database of nearly 200 exercises organized by muscle groups, covering multiple modalities, and accompanying visual instructions.",
@@ -62,7 +88,7 @@ const projects = [
     featured: true,
   },
   {
-    id: 4,
+    id: 5,
     name: "Vocab Builder",
     description:
       "A mobile vocabulary builder app built with Angular and Ionic that uses spaced repetition to help users retain new words.",
@@ -76,23 +102,6 @@ const projects = [
     ],
     github: "https://github.com/nrasam/vocab-builder",
     demo: null,
-    featured: false,
-  },
-  {
-    id: 5,
-    name: "Calorie & Nutrient Tracker",
-    description:
-      "A calorie and nutrient tracker built with Angular and Angular Material, styled after a nutritional facts label.",
-    image: makeGainsImg,
-    technologies: ["Angular", "TypeScript"],
-    highlights: [
-      "Tracks 24 distinct macro and micronutrients simultaneously — the nutrient aggregation system maps food additions to a shared nutrient table in real time, correctly handling partial servings and multi-nutrient foods",
-      "Searchable food list with live filtering — the food table filters results on every keystroke using a case-insensitive substring match, restoring the full list when the search is cleared",
-      "Angular Material data tables — used mat-table with defined column schemas (displayedColumns) for both the food list and the nutrient summary, demonstrating comfort with a professional UI component library",
-      "Service-based architecture with clear separation — FoodService handles food data, NutrientService owns all aggregation logic and calorie tracking",
-    ],
-    github: "https://github.com/nrasam/make-gains",
-    demo: "https://nrasam.github.io/make-gains/make-gains/",
     featured: false,
   },
   {

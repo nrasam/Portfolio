@@ -15,7 +15,7 @@ function Shortcut({ label, onClick, icon: Icon, badgeClass, gameCorner }) {
     <button type="button" className={styles.shortcut} onDoubleClick={onClick}>
       {badgeClass && <div className={styles[badgeClass]}>Fun!</div>}
       <div className={styles.iconContainer}>
-        <Icon size={20} />
+        <Icon size={25} />
       </div>
       <span className={styles.label}>{label}</span>
     </button>

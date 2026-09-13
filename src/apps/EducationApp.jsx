@@ -7,9 +7,9 @@ const education = [
     degree: "Honours Bachelor of Science in Computer Science",
     school: "York University",
     period: "2025 to Present",
-    gpa: "9.0/9.0",
+    gpa: "8.8/9.0",
     description:
-      "At York University, I’m building a strong academic foundation in computer science while staying actively involved in the programming community as a founding member and secretary of a student club. I’m also maintaining a perfect GPA and continuing to grow through coursework and hands-on technical projects.",
+      "At York University, I’m building a strong academic foundation in computer science while staying actively involved in the programming community as a founding member and secretary of a student club. I’m also maintaining a near perfect GPA and continuing to grow through coursework and hands-on technical projects.",
     achievements: [
       "President’s Honour Roll all semesters",
       "Founding member of the CodeXperts programming club | Acting secretary",
@@ -19,7 +19,7 @@ const education = [
     id: 2,
     degree: "Bachelor of Technology in Software Development",
     school: "Seneca Polytechnic",
-    period: "2019 - 2020",
+    period: "2019 - 2022",
     gpa: "4.0/4.0",
     description:
       "Developed strong technical and communication skills through software development studies and tutoring at Seneca Polytechnic.",

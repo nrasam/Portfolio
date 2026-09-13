@@ -10,7 +10,7 @@
   cursor: pointer;
   /* Transitions hover background */
   transition: background-color 150ms;
-  width: 5rem;
+  width: 7rem;
 }
 
 .shortcut:hover {
@@ -24,8 +24,8 @@
 }
 
 .iconContainer {
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 4rem;
+  height: 4rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -38,8 +38,8 @@
 }
 
 .gameIconContainer {
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 4rem;
+  height: 4rem;
   background: linear-gradient(to bottom right, #c084fc, #ec4899);
   border-radius: 0.5rem;
   display: flex;
@@ -96,8 +96,8 @@
 }
 
 [data-theme="xp"] .iconContainer {
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 4rem;
+  height: 4rem;
   display: flex;
   align-items: center;
   justify-content: center;

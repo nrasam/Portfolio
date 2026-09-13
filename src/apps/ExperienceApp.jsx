@@ -32,7 +32,7 @@ const experiences = [
     id: 2,
     company: "FDM Group",
     position: "Consultant Trainee",
-    period: "November 2022 - August 2025",
+    period: "November 2022 - May 2023",
     location: "Toronto, ON, CA",
     description:
       "Completed consultant training in Java, SQL, Selenium, and software development methodologies, while collaborating on team-based simulations and developing the technical and professional skills needed for client-facing roles.",

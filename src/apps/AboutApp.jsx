@@ -80,16 +80,16 @@ function AboutApp() {
         {/* Quick Stats */}
         <div className={styles.statsGrid}>
           <div className={styles.statCardBlue}>
-            <div className={styles.statNumberBlue}>6+</div>
+            <div className={styles.statNumberBlue}>6</div>
             <div className={styles.statLabel}>Projects Completed</div>
           </div>
           <div className={styles.statCardPurple}>
-            <div className={styles.statNumberPurple}>12</div>
+            <div className={styles.statNumberPurple}>14+</div>
             <div className={styles.statLabel}>Technologies Known</div>
           </div>
           <div className={styles.statCardGreen}>
-            <div className={styles.statNumberGreen}>9.0/9.0</div>
-            <div className={styles.statLabel}>GPA</div>
+            <div className={styles.statNumberGreen}>8.8/9.0</div>
+            <div className={styles.statLabel}>Major GPA</div>
           </div>
         </div>
       </div>
