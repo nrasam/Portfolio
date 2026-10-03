@@ -46,12 +46,18 @@
 }
 
 .shortcutContainer {
-  position: absolute;
-  top: 1rem;
-  left: 1rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
+  padding-top: 1rem;
+  /* Make the height of the container just short of the taskbar */
+  height: calc(100vh - var(--taskbar-height));
+  /* Grid works best here for snapping shortcuts to a grid */
+  display: grid;
+  /* Make the shortcuts fill the column first instead of the other way around */
+  grid-auto-flow: column;
+  /* Auto set the # of rows and make each row a set height */
+  grid-template-rows: repeat(auto-fill, 100px);
+  /* Make each column a uniform width */
+  grid-auto-columns: 100px;
+  gap: 16px;
 }
 
 .welcomeOverlay {
